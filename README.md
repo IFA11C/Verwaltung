@@ -1,6 +1,6 @@
 <h1>Coding Conventions</h1>
 
-<code>
+```php
     public function sampleFunction($a, $b = null) {
         if ($a === $b) {
             bar();
@@ -12,6 +12,6 @@
             BazClass::bar($arg2, $arg3);
         }
     }
-</code>
+```
 
 Please refer to https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md for more information about code style.
