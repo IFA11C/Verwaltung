@@ -21,6 +21,21 @@ a:hover {
     cursor: pointer;
 }
 
+tbody tr:nth-child(odd)
+{
+    background-color: #D0D1D4;
+}
+
+tbody tr:hover
+{
+    background-color: #808080;
+}
+
+tbody td:hover
+{
+    cursor: pointer;
+}
+
 .wrapper, .row {
     height: 100%;
     margin-left: 0;
