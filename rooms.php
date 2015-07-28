@@ -1,5 +1,5 @@
 <?php
-    //include './php/classes/db_connect.php';
+    include './php/classes/db_connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +22,13 @@
         <div class="wrapper">
             <div class="box">
                 <div class="row row-offcanvas row-offcanvas-left">              
-                    <!-- sidebar -->
-                    <div class="col col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
-                        <?php include('fragments/navigation.php'); ?>
-                    </div>
+                    <!-- Sidebar -->
+                    <?php include('fragments/navigation_left.php'); ?>
+                    <!-- /Sidebar -->
                     
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
+                        <?php include('fragments/navigation_top.php'); ?>
                         <div class="container">
                             <div>
                                 <h2>Räume</h2>
