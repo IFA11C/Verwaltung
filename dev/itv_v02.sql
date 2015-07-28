@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2015 at 10:48 AM
+-- Generation Time: Jul 28, 2015 at 02:19 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -19,27 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `itv_v02`
 --
+DROP DATABASE `itv_v02`;
 CREATE DATABASE IF NOT EXISTS `itv_v02` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `itv_v02`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hardware_in_raum`
---
-
-CREATE TABLE IF NOT EXISTS `hardware_in_raum` (
-  `sir_k_id` int(11) NOT NULL,
-  `sir_r_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `hardware_in_raum`
---
-
-INSERT INTO `hardware_in_raum` (`sir_k_id`, `sir_r_id`) VALUES
-(2, 2),
-(1, 4);
 
 -- --------------------------------------------------------
 
@@ -183,6 +165,25 @@ INSERT INTO `raeume` (`r_id`, `r_nr`, `r_bezeichnung`, `r_notiz`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `software_in_raum`
+--
+
+CREATE TABLE IF NOT EXISTS `software_in_raum` (
+  `sir_k_id` int(11) NOT NULL,
+  `sir_r_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `software_in_raum`
+--
+
+INSERT INTO `software_in_raum` (`sir_k_id`, `sir_r_id`) VALUES
+(2, 2),
+(1, 4);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wird_beschrieben_durch`
 --
 
@@ -202,13 +203,6 @@ INSERT INTO `wird_beschrieben_durch` (`komponentenarten_ka_id`, `komponentenattr
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `hardware_in_raum`
---
-ALTER TABLE `hardware_in_raum`
-  ADD PRIMARY KEY (`sir_k_id`,`sir_r_id`),
-  ADD KEY `sir_r_id` (`sir_r_id`);
 
 --
 -- Indexes for table `komponente_hat_attribute`
@@ -252,6 +246,13 @@ ALTER TABLE `raeume`
   ADD PRIMARY KEY (`r_id`);
 
 --
+-- Indexes for table `software_in_raum`
+--
+ALTER TABLE `software_in_raum`
+  ADD PRIMARY KEY (`sir_k_id`,`sir_r_id`),
+  ADD KEY `sir_r_id` (`sir_r_id`);
+
+--
 -- Indexes for table `wird_beschrieben_durch`
 --
 ALTER TABLE `wird_beschrieben_durch`
@@ -278,13 +279,6 @@ ALTER TABLE `raeume`
 --
 
 --
--- Constraints for table `hardware_in_raum`
---
-ALTER TABLE `hardware_in_raum`
-  ADD CONSTRAINT `hardware_in_raum_ibfk_1` FOREIGN KEY (`sir_r_id`) REFERENCES `raeume` (`r_id`),
-  ADD CONSTRAINT `hardware_in_raum_ibfk_2` FOREIGN KEY (`sir_k_id`) REFERENCES `komponenten` (`k_id`);
-
---
 -- Constraints for table `komponente_hat_attribute`
 --
 ALTER TABLE `komponente_hat_attribute`
@@ -298,6 +292,13 @@ ALTER TABLE `komponenten`
   ADD CONSTRAINT `fk_komponenten_haendler` FOREIGN KEY (`lieferant_l_id`) REFERENCES `lieferant` (`l_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_komponenten_komponentenarten1` FOREIGN KEY (`komponentenarten_ka_id`) REFERENCES `komponentenarten` (`ka_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `komponenten_ibfk_1` FOREIGN KEY (`raeume_r_id`) REFERENCES `raeume` (`r_id`);
+
+--
+-- Constraints for table `software_in_raum`
+--
+ALTER TABLE `software_in_raum`
+  ADD CONSTRAINT `software_in_raum_ibfk_1` FOREIGN KEY (`sir_r_id`) REFERENCES `raeume` (`r_id`),
+  ADD CONSTRAINT `software_in_raum_ibfk_2` FOREIGN KEY (`sir_k_id`) REFERENCES `komponenten` (`k_id`);
 
 --
 -- Constraints for table `wird_beschrieben_durch`
