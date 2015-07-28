@@ -20,12 +20,12 @@
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
-                            <h1 class="headline">PC 0056 <a class="btn btn-info pull-right">Bearbeiten</a></h1>
+                            <h1 class="page-header">PC 0056 <a class="btn btn-info pull-right">Bearbeiten</a></h1>
 
                             <div class="hardware-info">
-                                <h3>Asus 7594</h3>
-                                <h3>Seriennummer 012654</h3>
-                                <h3>Raum 45.110</h3>
+                                <h4>Asus 7594</h4>
+                                <h4>Seriennummer 012654</h4>
+                                <h4>Raum 45.110</h4>
                             </div>
 
                             <h3>Eigenschaften </h3>  
