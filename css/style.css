@@ -294,3 +294,11 @@ small.text-muted {
     padding-left:3px;
   }
 }
+
+.headline{
+    color:#00618f;
+}
+
+.hardware-info{
+    padding-bottom: 10px;
+}
