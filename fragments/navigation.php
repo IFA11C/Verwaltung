@@ -2,7 +2,7 @@
     $homeUrl = "./index.php";
     $hardwareUrl = "./hardware.php";
     $propertiesUrl = "./hardwareItem.php";
-    $roomsUrl = "#raume";
+    $roomsUrl = "./rooms.php";
 ?>
 <!-- Naviagtion -->
     <!-- This should expand the navigation if it is in Icon mode, but for some reason it doesn't.
