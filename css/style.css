@@ -3,9 +3,18 @@
     Author     : Jonathan
 */
 
+*
+{
+    cursor: default;
+}
+
 html, body {
     height: 100%;
     font-family: verdana,arial,sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .nav {
@@ -17,8 +26,14 @@ a {
     color: #222222;
 }
 
+a:focus
+{
+    outline: none;
+}
+
 a:hover {
     text-decoration: none;
+    cursor: pointer;
 }
 
 hr {
@@ -95,7 +110,7 @@ hr {
 }
 
 #main {
-    background-color: #e9eaed;
+    background: #fff;
     padding-left: 0;
     padding-right: 0;
 }
@@ -108,13 +123,19 @@ hr {
 
 #sidebar {
     padding: 0px;
-	padding-top: 15px;
+    padding-top: 15px;
+    padding-left: 0px;
 }
 
 #sidebar, #sidebar a, #sidebar-footer a {
     color: #ffffff;
     background-color: transparent;
 	text-shadow: 0 0 2px #000000;
+    padding-left: 0px;
+}
+
+#sidebar a
+{
     padding-left: 5px;
 }
 
@@ -181,15 +202,6 @@ h1,h2,h3 {
 
 .label-default {
     background-color: #dddddd;
-}
-
-.page-header {
-    margin-top: 55px;
-    padding-top: 9px;
-    border-top: 1px solid #eeeeee;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
 .panel-default .panel-heading {
