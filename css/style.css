@@ -23,12 +23,12 @@ a:hover {
 
 tbody tr:nth-child(odd)
 {
-    background-color: #D0D1D4;
+    background-color: #F3F2F1;
 }
 
 tbody tr:hover
 {
-    background-color: #808080;
+    background-color: #E8E8E8;
 }
 
 tbody td:hover
