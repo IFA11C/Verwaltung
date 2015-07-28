@@ -1,5 +1,5 @@
 <?php
-    $homeUrl = "/";
+    $homeUrl = "./index.php";
     $hardwareUrl = "#hardware";
     $propertiesUrl = "#eigenschaften";
     $roomsUrl = "#raume";
@@ -15,17 +15,17 @@
 
     <!-- Expaneded Navigation -->
     <ul class="nav hidden-xs" id="lg-menu">
-        <li class="active">
-            <a href="<?php echo($homeUrl); ?>"><span class="glyphicon glyphicon-home"></span> Startseite</a>
+        <li>
+            <a href="<?php echo($homeUrl); ?>"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Startseite</a>
         </li>
         <li>
-            <a href="<?php echo($hardwareUrl); ?>"><span class="glyphicon glyphicon-list"></span> Hardware</a>
+            <a href="<?php echo($hardwareUrl); ?>"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Hardware</a>
         </li>
         <li>
-            <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span> Eigenschaften</a>
+            <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;Eigenschaften</a>
         </li>
         <li>
-            <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span> Räume</a>
+            <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Räume</a>
         </li>
     </ul>
     <!-- /Expaneded Navigation -->
