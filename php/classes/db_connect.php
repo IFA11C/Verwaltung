@@ -7,7 +7,10 @@
  * Setzen des Charsets UTF-8
  */
 
-include_once '/../config/#psl-config.php'; 
+define("HOST", "localhost"); 			// The host you want to connect to. 
+define("USER", "root"); 		// The database username. 
+define("PASSWORD", "");                      // The database password. 
+define("DATABASE", "itv_v02");                   // The database name.
 
 //Verbindung aufbauen
 $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
