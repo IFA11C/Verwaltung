@@ -34,7 +34,7 @@
                       </thead>
                       <tbody>
                           <tr>
-                              <th scope="row">1</th>
+                              <td>1</td>
                               <td>PC 004</td>
                               <td>102.110</td>
                               <td>Amazon</td>
@@ -43,7 +43,7 @@
                               <td>PC für Sekretärin</td>
                           </tr>
                           <tr>
-                              <th scope="row">2</th>
+                              <td>2</td>
                               <td>PC 004</td>
                               <td>102.110</td>
                               <td>Amazon</td>
@@ -52,7 +52,7 @@
                               <td>PC für Sekretärin</td>
                           </tr>
                           <tr>
-                              <th scope="row">3</th>
+                              <td>3</td>
                               <td>PC 004</td>
                               <td>102.110</td>
                               <td>Amazon</td>
@@ -61,7 +61,7 @@
                               <td>PC für Sekretärin</td>
                           </tr>
                           <tr>
-                              <th scope="row">4</th>
+                              <td>4</td>
                               <td>PC 004</td>
                               <td>102.110</td>
                               <td>Amazon</td>
@@ -75,10 +75,16 @@
             </div>
           </div>
       </div>
-      
-      
 
     <script src="../js/jQuery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('.table > tr').click(function() {
+                // row was clicked
+            });
+        });
+    </script>
   </body>
 </html>
