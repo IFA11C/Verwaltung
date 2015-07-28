@@ -26,7 +26,7 @@
                             </div>
                             <div>
                                 <h3>Letzte Aktivitäten</h3>
-                                <table class="table table-striped table-bordered">
+                                <table class="table table-responsive">
                                     <thead>
                                         <tr>
                                             <th>Type</th>
