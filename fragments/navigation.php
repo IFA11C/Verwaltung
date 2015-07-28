@@ -1,7 +1,7 @@
 <?php
     $homeUrl = "./index.php";
-    $hardwareUrl = "#hardware";
-    $propertiesUrl = "#eigenschaften";
+    $hardwareUrl = "./hardware.php";
+    $propertiesUrl = "./hardwareItem.php";
     $roomsUrl = "#raume";
 ?>
 <!-- Naviagtion -->
