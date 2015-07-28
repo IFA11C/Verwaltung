@@ -3,9 +3,18 @@
     Author     : Jonathan
 */
 
+*
+{
+    cursor: default;
+}
+
 html, body {
     height: 100%;
     font-family: verdana,arial,sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .nav {
@@ -17,8 +26,14 @@ a {
     color: #222222;
 }
 
+a:focus
+{
+    outline: none;
+}
+
 a:hover {
     text-decoration: none;
+    cursor: pointer;
 }
 
 hr {
