@@ -81,7 +81,7 @@
         </div>
 
         <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
@@ -126,9 +126,21 @@
         <script>
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-//                  $(this).find('td').each (function() {
-//                    
-//                  });     
+                  tableRowArr = [];
+                    for ( var i = 1; i < table.rows.length; i++ ) {
+                        tableRowArr.push({
+                            name: table.rows[i].cells[0].innerHTML,
+                            room: table.rows[i].cells[1].innerHTML,
+                            supplier: table.rows[i].cells[2].innerHTML,
+                            howObtained: table.rows[i].cells[3].innerHTML,
+                            howOftenWorn: table.rows[i].cells[4].innerHTML,
+                            whereMade: table.rows[i].cells[5].innerHTML,
+                            hasGraphic: table.rows[i].cells[6].innerHTML
+                        });
+                    }
+                  $(this).find('td').each (function() {
+                    array.
+                  });     
                   $('#modalLabel').html("Hallo Welt");
                   $('#modal-edit').modal('show');
                 });
