@@ -1,8 +1,9 @@
 <?php
-    $homeUrl = "../pages/index.php";
-    $hardwareUrl = "../pages/component.php";
-    $propertiesUrl = "../pages/componentsAttributes.php";
-    $roomsUrl = "../pages/rooms.php";
+    $homeUrl = "./index.php";
+    $hardwareUrl = "./component.php";
+    $propertiesUrl = "./componentsAttributes.php";
+    $roomsUrl = "./rooms.php";
+    $userUrl = "./logout.php";
 ?>
 <!-- Naviagtion -->
 <div class="col col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
@@ -19,6 +20,9 @@
         </li>
         <li>
             <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Räume</a>
+        </li>
+        <li>
+            <a href="<?php echo($userUrl); ?>"><span class="glyphicon glyphicon-eject"></span>&nbsp;&nbsp;Abmelden</a>
         </li>
     </ul>
     <!-- /Expaneded Navigation -->
@@ -43,6 +47,11 @@
         <li>
             <a href="<?php echo($roomsUrl); ?>" class="text-center">
                 <span class="glyphicon glyphicon-book"></span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo($userUrl); ?>" class="text-center">
+                <span class="glyphicon glyphicon-eject"></span>
             </a>
         </li>
     </ul>
