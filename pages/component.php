@@ -23,7 +23,7 @@
                                 Hardwareverwaltung
                             </h1>
                             
-                            <table class="table table-responsive">
+                            <table id="" class="table table-responsive">
                               <thead>
                                   <tr>
                                       <th>#</th>
@@ -126,25 +126,18 @@
         <script>
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-                  tableRowArr = [];
-                    for ( var i = 1; i < table.rows.length; i++ ) {
-                        tableRowArr.push({
-                            name: table.rows[i].cells[0].innerHTML,
-                            room: table.rows[i].cells[1].innerHTML,
-                            supplier: table.rows[i].cells[2].innerHTML,
-                            howObtained: table.rows[i].cells[3].innerHTML,
-                            howOftenWorn: table.rows[i].cells[4].innerHTML,
-                            whereMade: table.rows[i].cells[5].innerHTML,
-                            hasGraphic: table.rows[i].cells[6].innerHTML
-                        });
-                    }
-                  $(this).find('td').each (function() {
-                    array.
-                  });     
-                  $('#modalLabel').html("Hallo Welt");
-                  $('#modal-edit').modal('show');
+                    
+                    $('#modalLabel').html($(this).children().eq(1).text());
+                    $('#txtName').val($(this).children().eq(1).text());
+                    $('#txtRoom').val($(this).children().eq(2).text());
+                    $('#txtSupplier').val($(this).children().eq(3).text());
+                    $('#txtPurchaseDate').val($(this).children().eq(4).text());
+                    $('#txtWarrantyInYears').val($(this).children().eq(5).text());
+                    $('#txtDescription').val($(this).children().eq(6).text());
+                    
+                    $('#modal-edit').modal('show');
                 });
-              });
+            });
         </script>
     </body>
 </html>
