@@ -47,7 +47,7 @@
         </li>
     </ul>
     <div class="hidden-xs">
-        <img id="sidebar-footer" src="images/Logo.png"/>
+        <img id="sidebar-footer" src="../images/Logo.png"/>
     </div>
     <!-- /Icon only Navigation -->
 </div>
