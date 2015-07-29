@@ -1,5 +1,16 @@
 <?php
-    include('../php/classes/db_connect.php');
+    include '../php/classes/db_connect.php';
+    include '../php/classes/user.php';
+    
+    if($_SERVER['REQUEST_METHOD'] == "POST")
+    {
+        $func = filter_input(INPUT_POST, "post_func");
+        
+        if ($func == "insertRoom")
+        {
+            Room::insertRoom();
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -66,29 +77,30 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="modalLabel"></h4>
                     </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-group">
-                            <label class="control-label" for="txtName">Raumnummer</label>
-                            <input placeholder="Raumnummer" id="txtRoomNumber" class="form-control" type="text"/>
+                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label" for="txtName">Raumnummer</label>
+                                <input placeholder="Raumnummer" id="txtRoomNumber" class="form-control" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtRoom">Bezeichnung</label>
+                                <input placeholder="Bezeichnung" id="txtDescription" class="form-control" type="text"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtSupplier">Notiz</label>
+                                <input placeholder="Notiz" id="txtNote" class="form-control" type="text"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtRoom">Bezeichnung</label>
-                            <input placeholder="Bezeichnung" id="txtDescription" class="form-control" type="text"/>
+                        <div class="modal-footer">
+                            <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                            <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtSupplier">Notiz</label>
-                            <input placeholder="Notiz" id="txtNote" class="form-control" type="text"/>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
-                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
-                    </div>
-                    </div>
+                        <input type="hidden" name="func" value="insertRoom" />
+                    </form>
                 </div>
             </div>
+        </div>
         
         <script>
             function Add(){
@@ -122,30 +134,13 @@
                     $('#modal-edit').modal('show');
                 });
             });
-            
-            $(document).ready(function() {
-                $('#modalBtn2').on( "click", function() {
-                    alert("hallo1");
-                    $.ajax({
-                        url: '../php/classes/room.php',
-                        type: 'post',
-                        data: { "call_InsertRoom": "1", 
-                            "post_roomID": $('#txtRoomNumber').val($(this).children().eq(1).text()),
-                            "post_description": $('#txtDescription').val($(this).children().eq(2).text()),  
-                            "post_note": $('#txtNote').val($(this).children().eq(3).text())},
-                        success: function(response) { console.log(response); } 
-                    });
 
-                    alert('Hallo');
-                });
-            });
-
-            $(document).ready(function() {
-                $(".raum").on( "click", function() {
-                    var id = $(this).find(".hidden").text();
-                    console.log("Id: " + id);
-                });
-            });
+//            $(document).ready(function() {
+//                $(".raum").on( "click", function() {
+//                    var id = $(this).find(".hidden").text();
+//                    console.log("Id: " + id);
+//                });
+//            });
         </script>
     </body>
 </html>
