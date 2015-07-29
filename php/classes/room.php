@@ -6,7 +6,7 @@ class Room {
     private $func;
 
     public static function getAllRooms() {
-        
+        echo "test";
     }
     
     public static function insertRoom($roomID, $description, $note) {
