@@ -20,10 +20,10 @@ function getRooms($mysqli) {
         exit();
     }
     $stmt->execute();       
-    $stmt->bind_result($ID, $NR , $DESC, $NOTE);
+    $stmt->bind_result($id, $nr, $description, $note);
     $rooms = array();
     while ($stmt->fetch()) {
-        $rooms[] = array("Id" => $ID, "Number" => $NR, "Description" => $DESC, "Note" => $NOTE);
+        $rooms[] = array("Id" => $id, "Number" => $nr, "Description" => $description, "Note" => $note);
     }
     return $rooms; 
 }

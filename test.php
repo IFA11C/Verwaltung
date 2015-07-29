@@ -8,14 +8,13 @@ foreach ($rooms as $room) {
     echo ' raum ' . $room["Id"] . '<br/>';
 }
 $hardware = getHardware($mysqli);
-echo 'Hardware ID | Room ID | Vendor ID | Purchase Date | Warranty | Note | Manufacturer | Type <br/>';
+echo 'Hardware ID | Room | Purchase Date | Warranty | Manufacturer | Note |  Type <br/>';
 foreach ($hardware as $item) {
     echo $item["Id"] . ' | ' . 
-         $item["Room"] . ' | ' . 
-         $item["Vendor"] . ' | ' . 
+         $item["Type"] . ' | ' .   
+         $item["Room"] . ' | ' .  
          $item["PDate"] . ' | ' .
          $item["Warranty"] . ' | ' . 
-         $item["Note"] . ' | ' . 
-         $item["Manufacturer"] . ' | ' . 
-         $item["Type"].'<br/>';
+         $item["Manufacturer"] . ' | ' .
+         $item["Note"].'<br/>'; 
 }
