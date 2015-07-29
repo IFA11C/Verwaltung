@@ -67,10 +67,37 @@
                             </div>
                             <div>
                                 <form style="text-align: right;">
-                                    <button class="btn btn-success">Neu +</button>
+                                    <button class="btn btn-success" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddRoom">Neu +</button>
                                 </form>
                             </div>
                         </div>
+                        
+                        
+                        
+                        <div class="modal fade" id="modalAddRoom" tabindex="-1" role="dialog" aria-labelledby="modalAddRoom">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="meinModalLabel">neuen Raum hinzufügen</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                                        <button type="button" class="btn btn-primary">Raum speichern</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
