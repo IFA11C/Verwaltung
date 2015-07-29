@@ -60,12 +60,10 @@
                             </table>
                             
                             <form style="text-align: right;">
-                                <button class="btn btn-success">Neu +</button>
+                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#modalAddRoom">Neu +</button>
                             </form>
                         </div>
-                        
-                        
-                        
+                        <!-- modal -->
                         <div class="modal fade" id="modalAddRoom" tabindex="-1" role="dialog" aria-labelledby="modalAddRoom">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -87,9 +85,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
-                        
+                        <!-- /modal -->      
                     </div>
                 </div>
             </div>
