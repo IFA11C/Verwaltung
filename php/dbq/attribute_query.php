@@ -12,7 +12,8 @@ include_once '/../classes/db_connect.php';
 /**
  * Diese Funktion gibt alle Attribute zurück 
  */
-function getAttributeNames($mysqli) {
+function getAttributeNames() {
+    global $mysqli;
     if (!$stmt = $mysqli->prepare("SELECT * FROM komponentenattribute")) {
         // Could not create a prepared statement
         header("Location: ./err.php?err=Database error: "
