@@ -20,27 +20,27 @@ function getHardware($mysqli) {
     }
     $stmt->execute();       
     $stmt->bind_result(
-            $ID,       //Hardware ID
-            $ROOM ,        //Room ID
-            $VENDOR,       //Vendor ID
-            $PDATE,        //Purchase Date
-            $WARRANTY,    //Warranty (e.g. 2 for 2 years)
-            $NOTE,        //notes/notizen
-            $MANUFACTURER,  //manufacturer
-            $TYPE);     //hardware type
+            $id,       //Hardware ID
+            $room ,        //Room ID
+            $vendor,       //Vendor ID
+            $pDate,        //Purchase Date
+            $warranty,    //Warranty (e.g. 2 for 2 years)
+            $note,        //notes/notizen
+            $manufacturer,  //manufacturer
+            $type);     //hardware type
     
     $hardware = array();
     
     while ($stmt->fetch()) {
         $hardware[] = array(
-            "Id" => $ID, 
-            "Room" => $ROOM, 
-            "Vendor" => $VENDOR, 
-            "PDate" => $PDATE, 
-            "Warranty" => $WARRANTY, 
-            "Note" => $NOTE, 
-            "Manufacturer" => $MANUFACTURER, 
-            "Type" => $TYPE);
+            "Id" => $id, 
+            "Room" => $room, 
+            "Vendor" => $vendor, 
+            "PDate" => $pDate, 
+            "Warranty" => $warranty, 
+            "Note" => $note, 
+            "Manufacturer" => $manufacturer, 
+            "Type" => $type);
     }
     return $hardware; 
 }
