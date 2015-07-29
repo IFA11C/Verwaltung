@@ -99,7 +99,7 @@ tbody td:hover
 
 #sidebar {
     padding: 0px;
-    padding-top: 50px;
+    padding-top: 15px;
     padding-left: 0px;
     background: #444; /* Fallback for Browsers which don't support gradients */
     background: -webkit-linear-gradient(#444, #333); /* For Safari 5.1 to 6.0 */

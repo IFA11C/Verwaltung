@@ -1,11 +1,11 @@
 <?php
-    include './php/classes/db_connect.php';
+    include '../php/classes/db_connect.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <?php include('fragments/default_includes.php'); ?>
+        <?php include('../fragments/default_includes.php'); ?>
         <title>IT-Verwaltung</title>
     </head>
     <body>
@@ -13,12 +13,11 @@
             <div class="box">
                 <div class="row row-offcanvas row-offcanvas-left">              
                     <!-- Sidebar -->
-                    <?php include('fragments/navigation_left.php'); ?>
+                    <?php include('../fragments/navigation_left.php'); ?>
                     <!-- /Sidebar -->
                     
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
-                        <?php include('fragments/navigation_top.php'); ?>
                         <div class="container">
                             <div>
                                 <h2>IT-Verwaltung</h2>

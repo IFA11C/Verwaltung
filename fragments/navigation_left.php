@@ -1,8 +1,8 @@
 <?php
-    $homeUrl = "./index.php";
-    $hardwareUrl = "./component.php";
-    $propertiesUrl = "./componentsAttributes.php";
-    $roomsUrl = "./rooms.php";
+    $homeUrl = "../pages/index.php";
+    $hardwareUrl = "../pages/component.php";
+    $propertiesUrl = "../pages/componentsAttributes.php";
+    $roomsUrl = "../pages/rooms.php";
 ?>
 <!-- Naviagtion -->
 <div class="col col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">

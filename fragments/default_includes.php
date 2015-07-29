@@ -3,8 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
         
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet"/>
-<link href="css/style.css" rel="stylesheet"/>
+<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../css/style.css" rel="stylesheet"/>
 
-<script src="js/jQuery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/jQuery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>

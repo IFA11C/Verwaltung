@@ -1,6 +1,6 @@
 <?php
-    include './php/classes/db_connect.php';
-    include './php/classes/user.php';
+    include '../php/classes/db_connect.php';
+    include '../php/classes/user.php';
     
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <?php include('fragments/default_includes.php'); ?>
+        <?php include('../fragments/default_includes.php'); ?>
         <title>Login</title>
     </head>
     <body>
