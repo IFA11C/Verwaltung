@@ -92,11 +92,11 @@
         
         <script>
             function Add(){
-                //Change button text
+                //Buttontext verändern
                 $('#modalBtn1').html("Abbrechen");
                 $('#modalBtn2').html("Raum hinzufügen");
                 
-                //Clear values
+                //Felder leeren
                 $('#modal-edit').find('input').each( function () {
                     $(this).val('');
                 });
@@ -107,18 +107,32 @@
             $(document).ready(function(){
                 $('table tr').on('click', function(){
                     
-                    //Change button text
+                    //Buttontext verändern
                     $('#modalBtn1').html("Änderungen verwerfen");
                     $('#modalBtn2').html("Änderungen speichern");
                     
-                    //Change content from imput fields
+                    //Inhalt in Felder schreiben
                     $('#modalLabel').html($(this).children().eq(1).text());
                     $('#txtRoomNumber').val($(this).children().eq(1).text());
                     $('#txtDescription').val($(this).children().eq(2).text());
                     $('#txtNote').val($(this).children().eq(3).text());
                     
                     $('#modal-edit').modal('show');
+            });
+                
+            //TODO: Bearbeitung in PHP starten
+            $('#modalBtn2').click(function() {
+                $.ajax({
+                    url: 'myFunctions.php',
+                    type: 'post',
+                    data: { "call_InsertRoom": "1", 
+                        "post_roomID": $('#txtRoomNumber').val($(this).children().eq(1).text()),
+                        "post_description": $('#txtDescription').val($(this).children().eq(2).text()),  
+                        "post_note": $('#txtNote').val($(this).children().eq(3).text())},
+                    success: function(response) { console.log(response); } 
                 });
+                
+                alert('Hallo');
             });
 
             $(document).ready(function() {
