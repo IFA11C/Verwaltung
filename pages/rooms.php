@@ -123,19 +123,21 @@
                 });
             });
             
-            //TODO: Bearbeitung in PHP starten
-            $('#modalBtn2').click(function() {
-                $.ajax({
-                    url: 'myFunctions.php',
-                    type: 'post',
-                    data: { "call_InsertRoom": "1", 
-                        "post_roomID": $('#txtRoomNumber').val($(this).children().eq(1).text()),
-                        "post_description": $('#txtDescription').val($(this).children().eq(2).text()),  
-                        "post_note": $('#txtNote').val($(this).children().eq(3).text())},
-                    success: function(response) { console.log(response); } 
+            $(document).ready(function() {
+                $('#modalBtn2').on( "click", function() {
+                    alert("hallo1");
+                    $.ajax({
+                        url: '../php/classes/room.php',
+                        type: 'post',
+                        data: { "call_InsertRoom": "1", 
+                            "post_roomID": $('#txtRoomNumber').val($(this).children().eq(1).text()),
+                            "post_description": $('#txtDescription').val($(this).children().eq(2).text()),  
+                            "post_note": $('#txtNote').val($(this).children().eq(3).text())},
+                        success: function(response) { console.log(response); } 
+                    });
+
+                    alert('Hallo');
                 });
-                
-                alert('Hallo');
             });
 
             $(document).ready(function() {
