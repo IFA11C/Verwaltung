@@ -113,10 +113,11 @@ function updateRoom($id, $number, $name, $note) {
 /**
  * Diese Funktion gibt alle Räume zurück 
  */
-function insertRooms($number,$name,$note) {
+
+function removeRoom($id) {
     global $mysqli;
-    if ($insert_stmt = $mysqli->prepare("INSERT INTO `raeume` (`r_nr`, `r_bezeichnung`,`r_notiz`) VALUES ( ?, ?, ?)")) {
-        $insert_stmt->bind_param('sss', $number, $name, $note);
+    if ($insert_stmt = $mysqli->prepare("DELETE FROM raeume WHERE r_id = ?")) {
+        $insert_stmt->bind_param('s', $id);
         // Execute the prepared query.
         if (!$insert_stmt->execute()) {
             return FALSE;
