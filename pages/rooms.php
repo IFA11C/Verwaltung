@@ -60,11 +60,11 @@
                             </table>
                             
                             <form style="text-align: right;">
-                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#modalAddRoom">Neu</button>
+                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#modal-edit">Neu</button>
                             </form>
                         </div>
                         <!-- modal -->
-                        <div class="modal fade" id="modalAddRoom" tabindex="-1" role="dialog" aria-labelledby="modalAddRoom">
+                        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modalAddRoom">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -79,11 +79,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label" for="txtBezeichnung">Bezeichnung</label>
-                                                <input type="text" placeholder="Bezeichnung" id="txtRaumnummer" class="form-control" />
+                                                <input type="text" placeholder="Bezeichnung" id="txtBezeichnung" class="form-control" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label" for="txtNotiz">Notiz</label>
-                                                <input type="text" placeholder="Notiz" id="txtRaumnummer" class="form-control" />
+                                                <input type="text" placeholder="Notiz" id="txtNotiz" class="form-control" />
                                             </div>
                                         </form>
                                     </div>
@@ -99,5 +99,19 @@
                 </div>
             </div>
         </div>
+        <script>
+            $(document).ready(function(){
+                $('table tr').on('click', function(){
+                    
+                    $('#modalLabel').html($(this).children().eq(1).text());
+                    $('#txtRaumnummer').val($(this).children().eq(1).text());
+                    $('#txtBezeichnung').val($(this).children().eq(2).text());
+                    $('#txtNotiz').val($(this).children().eq(3).text());
+                    $('#raum-btn').val('Raum ändern');
+                    
+                    $('#modal-edit').modal('show');
+                });
+            });
+        </script>
     </body>
 </html>
