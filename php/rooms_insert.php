@@ -1,10 +1,7 @@
-
 <?php
-
 include_once './classes/db_connect.php';
 include_once './classes/sec_session.php';
 include_once './dbq/rooms_query.php';
-
 sec_session_start();
 $error_msg = "";
 
