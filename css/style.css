@@ -69,8 +69,14 @@ tbody td:hover
 }
 
 #main {
+    background-image: url('../images/background.png');
+    background-size: cover;
     padding-left: 0;
     padding-right: 0;
+}
+
+.center {
+    text-align: center;
 }
 
 .nav {

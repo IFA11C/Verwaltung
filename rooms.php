@@ -30,46 +30,43 @@
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <?php include('fragments/navigation_top.php'); ?>
                         <div class="container">
-                            <div>
-                                <h2>Räume</h2>
-                            </div>
-                            <div>
-                                <table id="rooms" class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th class="hidden">Id</th>
-                                            <th>Nummer</th>
-                                            <th>Bezeichnung</th>
-                                            <th>Notiz</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="raum">
-                                            <td class="hidden">1</td>
-                                            <td>r102</td>
-                                            <td>Labor</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr class="raum">
-                                            <td class="hidden">2</td>
-                                            <td>r105</td>
-                                            <td>Werkstatt</td>
-                                            <td>Keine Computer vorhanden.</td>
-                                        </tr>
-                                        <tr class="raum">
-                                            <td class="hidden">3</td>
-                                            <td>r201</td>
-                                            <td>IT</td>
-                                            <td>Eine Notiz</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div>
-                                <form style="text-align: right;">
-                                    <button class="btn btn-success" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddRoom">Neu +</button>
-                                </form>
-                            </div>
+                            
+                            <h1 class="page-header">Räume</h1>
+                            
+                            <table id="rooms" class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="hidden">Id</th>
+                                        <th>Nummer</th>
+                                        <th>Bezeichnung</th>
+                                        <th>Notiz</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="raum">
+                                        <td class="hidden">1</td>
+                                        <td>r102</td>
+                                        <td>Labor</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="raum">
+                                        <td class="hidden">2</td>
+                                        <td>r105</td>
+                                        <td>Werkstatt</td>
+                                        <td>Keine Computer vorhanden.</td>
+                                    </tr>
+                                    <tr class="raum">
+                                        <td class="hidden">3</td>
+                                        <td>r201</td>
+                                        <td>IT</td>
+                                        <td>Eine Notiz</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <form style="text-align: right;">
+                                <button class="btn btn-success">Neu +</button>
+                            </form>
                         </div>
                         
                         
