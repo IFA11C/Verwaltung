@@ -81,5 +81,60 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade modal-lg" id="modal-edit" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="txtName">Name</label>
+                            <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtRoom">Raum</label>
+                            <input placeholder="Name" id="txtRoom" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtSupplier">Lieferant</label>
+                            <input placeholder="Name" id="txtSupplier" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
+                            <input placeholder="Name" id="txtPurchaseDate" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
+                            <input placeholder="Name" id="txtWarrantyInYears" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtDescription">Beschreibung</label>
+                            <input placeholder="Name" id="txtDescription" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+        <script>
+            $(document).ready(function(){
+                $('table tr').on('click', function(){
+//                  $(this).find('td').each (function() {
+//                    
+//                  });     
+                  $('#modalLabel').html("Hallo Welt");
+                  $('#modal-edit').modal('show');
+                });
+              });
+        </script>
     </body>
 </html>
