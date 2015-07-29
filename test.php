@@ -1,8 +1,8 @@
 <?php 
 include './php/classes/db_connect.php';
-include './php/dbq/rooms.php';
-include './php/dbq/hardware.php';
-include './php/dbq/hardwareAttribute.php';
+include './php/dbq/rooms_query.php';
+include './php/dbq/hardware_query.php';
+include './php/dbq/component_query.php';
 
 echo '<br/> <b>Räume:</b> <br/>';
 $rooms = getRooms($mysqli);
@@ -22,7 +22,7 @@ foreach ($hardware as $item) {
          $item["Note"].'<br/>'; 
 }
 echo '<br/> <b>Hardware Attribute:</b> <br/>';
-$hardwareAttribute = getHardwareAttribute($mysqli, 1);
+$hardwareAttribute = getHardwareAttribute(1, $mysqli);
 echo 'Hardware ID | Hardware Type | Room | Purchase Date | Warranty | Manufacturer | Note | Attribut ID | Description | Value <br/>';
 foreach ($hardwareAttribute as $attribut) {
     echo $attribut["Id"] . ' | ' . 
