@@ -75,7 +75,7 @@
                               </tbody>
                             </table>
                             <form class="pull-right">
-                                <button class="btn btn-success" type="button" onclick="Add()">Neu</button>
+                                <button class="btn btn-info" type="button" onclick="Add()">Neu</button>
                             </form>
                         </div>
                     </div>
@@ -128,6 +128,8 @@
         
         <script>
             function Add(){
+                $('#modalLabel').html("Komponente hinzufügen");
+                
                 //Change button text
                 $('#modalBtn1').html("Abbrechen");
                 $('#modalBtn2').html("Komponente hinzufügen");
