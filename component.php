@@ -81,11 +81,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Großes Modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Großes Modal</button>
 
-        <div class="modal fade bs-example-modal-lg" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="meinGroßesModalLabel">
+        <div class="modal fade modal-lg" id="modal-edit" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
