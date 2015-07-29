@@ -74,12 +74,15 @@
                                   </tr>
                               </tbody>
                             </table>
+                            <form class="pull-right">
+                                <button class="btn btn-success" type="button" onclick="Add()">Neu</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -116,17 +119,30 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
+                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
                     </div>
                     </div>
                 </div>
             </div>
         
         <script>
+            function Add(){
+                //Change button text
+                $('#modalBtn1').html("Abbrechen");
+                $('#modalBtn2').html("Komponente hinzufügen");
+                
+                $('#modal-edit').modal('show');
+            };
+            
             $(document).ready(function(){
                 $('table tr').on('click', function(){
                     
+                    //Change button text
+                    $('#modalBtn1').html("Änderungen verwerfen");
+                    $('#modalBtn2').html("Änderungen speichern");
+                    
+                    //Change content from imput fields
                     $('#modalLabel').html($(this).children().eq(1).text());
                     $('#txtName').val($(this).children().eq(1).text());
                     $('#txtRoom').val($(this).children().eq(2).text());
