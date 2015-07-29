@@ -71,6 +71,7 @@ tbody td:hover
 #main {
     background-image: url('../images/background.png');
     background-size: cover;
+    height: 100%;
     padding-left: 0;
     padding-right: 0;
 }
@@ -145,9 +146,9 @@ h1, h2, h3 {
     background-color: #fff;
 }
 
-.form-control {
+/*.form-control {
 	cursor: text;
-}
+}*/
 
 /* adjust the contents on smaller devices */
 @media (max-width: 768px) {
