@@ -12,7 +12,8 @@ include_once '/../classes/db_connect.php';
 /**
  * Diese Funktion gibt alle Räume zurück 
  */
-function getRooms($mysqli) {
+function getRooms() {
+    global $mysqli;
     if (!$stmt = $mysqli->prepare("SELECT * FROM raeume")) {
         // Could not create a prepared statement
         header("Location: ./err.php?err=Database error: "

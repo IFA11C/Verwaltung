@@ -57,5 +57,45 @@
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="txtName">Name</label>
+                            <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtDescription">Beschreibung</label>
+                            <input placeholder="Name" id="txtDescription" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+        <script>
+            $(document).ready(function(){
+                $('table tr').on('click', function(){
+                    
+                    $('#modalLabel').html($(this).children().eq(1).text());
+                    $('#txtName').val($(this).children().eq(1).text());
+                    $('#txtDescription').val($(this).children().eq(2).text());
+                    
+                    $('#modal-edit').modal('show');
+                });
+            });
+        </script>
     </body>
 </html>

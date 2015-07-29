@@ -11,7 +11,8 @@ include_once '/../classes/db_connect.php';
 /**
  * Diese Funktion gibt alle Hardware zurück 
  */
-function getHardware($mysqli) {
+function getHardware() {
+    global $mysqli;
     if (!$stmt = $mysqli->prepare(
             "SELECT k.k_id, ka.ka_komponentenart, r.r_nr, k.k_einkaufsdatum, "
             . "k.k_gewaehrleistungsdauer, k.k_hersteller, k.k_notiz "
