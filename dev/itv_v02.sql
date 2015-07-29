@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2015 at 10:12 AM
+-- Generation Time: Jul 29, 2015 at 10:59 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -251,7 +251,8 @@ INSERT INTO `wird_beschrieben_durch` (`komponentenarten_ka_id`, `komponentenattr
 --
 ALTER TABLE `benutzer`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `Rolle` (`rollen_id`);
+  ADD UNIQUE KEY `Rolle` (`rollen_id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `benutzer_rollen`
