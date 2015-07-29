@@ -74,12 +74,15 @@
                                   </tr>
                               </tbody>
                             </table>
+                            <form class="pull-right">
+                                <button class="btn btn-success" type="button" onclick="Add()">Neu</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -95,38 +98,56 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Name" id="txtRoom" class="form-control" type="text"/>
+                            <input placeholder="Raum" id="txtRoom" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtSupplier">Lieferant</label>
-                            <input placeholder="Name" id="txtSupplier" class="form-control" type="text"/>
+                            <input placeholder="Lieferant" id="txtSupplier" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
-                            <input placeholder="Name" id="txtPurchaseDate" class="form-control" type="text"/>
+                            <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
-                            <input placeholder="Name" id="txtWarrantyInYears" class="form-control" type="text"/>
+                            <input placeholder="Garantie" id="txtWarrantyInYears" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Name" id="txtDescription" class="form-control" type="text"/>
+                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
                         </div>
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
+                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
                     </div>
                     </div>
                 </div>
             </div>
         
         <script>
+            function Add(){
+                //Change button text
+                $('#modalBtn1').html("Abbrechen");
+                $('#modalBtn2').html("Komponente hinzufügen");
+                
+                //Clear values
+                $('#modal-edit').find('input').each( function () {
+                    $(this).val('');
+                });
+                
+                $('#modal-edit').modal('show');
+            };
+            
             $(document).ready(function(){
                 $('table tr').on('click', function(){
                     
+                    //Change button text
+                    $('#modalBtn1').html("Änderungen verwerfen");
+                    $('#modalBtn2').html("Änderungen speichern");
+                    
+                    //Change content from imput fields
                     $('#modalLabel').html($(this).children().eq(1).text());
                     $('#txtName').val($(this).children().eq(1).text());
                     $('#txtRoom').val($(this).children().eq(2).text());

@@ -36,6 +36,39 @@
                               <li class="list-group-item">Vestibulum at eros</li>
                               <li class="list-unstyled"><a class="btn btn-info pull-right">Add</a></li>
                             </ul>
+                            
+                            <h3>Eigenschaften </h3> 
+                            <table class="table table-responsive">
+                              <thead>
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Name</th>
+                                      <th>Beschreibung</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>1</td>
+                                      <td>CPU</td>
+                                      <td>Prozessor</td>
+                                  </tr>
+                                  <tr>
+                                      <td>2</td>
+                                      <td>CPU</td>
+                                      <td>Prozessor</td>
+                                  </tr>
+                                  <tr>
+                                      <td>3</td>
+                                      <td>CPU</td>
+                                      <td>Prozessor</td>
+                                  </tr>
+                                  <tr>
+                                      <td>4</td>
+                                      <td>CPU</td>
+                                      <td>Prozessor</td>
+                                  </tr>
+                              </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

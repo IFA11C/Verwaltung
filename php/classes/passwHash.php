@@ -43,7 +43,7 @@ function create_hash($password)
 {
     // format: algorithm:iterations:salt:hash
     $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTE_SIZE, MCRYPT_DEV_URANDOM));
-    return PBKDF2_ITERATIONS . ":" .  $salt . ":" .
+    return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" .
         base64_encode(pbkdf2(
             PBKDF2_HASH_ALGORITHM,
             $password,
@@ -136,6 +136,4 @@ function pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output =
     else
         return bin2hex(substr($output, 0, $key_length));
 }
-echo create_hash("test");
-
 ?>
