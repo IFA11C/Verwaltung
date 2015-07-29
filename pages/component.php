@@ -98,23 +98,23 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Name" id="txtRoom" class="form-control" type="text"/>
+                            <input placeholder="Raum" id="txtRoom" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtSupplier">Lieferant</label>
-                            <input placeholder="Name" id="txtSupplier" class="form-control" type="text"/>
+                            <input placeholder="Lieferant" id="txtSupplier" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
-                            <input placeholder="Name" id="txtPurchaseDate" class="form-control" type="text"/>
+                            <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
-                            <input placeholder="Name" id="txtWarrantyInYears" class="form-control" type="text"/>
+                            <input placeholder="Garantie" id="txtWarrantyInYears" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Name" id="txtDescription" class="form-control" type="text"/>
+                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
                         </div>
                     </div>
                     
@@ -131,6 +131,11 @@
                 //Change button text
                 $('#modalBtn1').html("Abbrechen");
                 $('#modalBtn2').html("Komponente hinzufügen");
+                
+                //Clear values
+                $('#modal-edit').find('input').each( function () {
+                    $(this).val('');
+                });
                 
                 $('#modal-edit').modal('show');
             };

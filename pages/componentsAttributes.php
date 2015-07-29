@@ -52,6 +52,9 @@
                                   </tr>
                               </tbody>
                             </table>
+                            <form class="pull-right">
+                                <button class="btn btn-success" type="button" onclick="Add()">Neu</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -73,22 +76,40 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Name" id="txtDescription" class="form-control" type="text"/>
+                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
                         </div>
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
+                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
                     </div>
                     </div>
                 </div>
             </div>
         
         <script>
+            function Add(){
+                //Change button text
+                $('#modalBtn1').html("Abbrechen");
+                $('#modalBtn2').html("Eigenschaft hinzufügen");
+                
+                //Clear values
+                $('#modal-edit').find('input').each( function () {
+                    $(this).val('');
+                });
+                
+                $('#modal-edit').modal('show');
+            };
+            
             $(document).ready(function(){
                 $('table tr').on('click', function(){
                     
+                    //Change button text
+                    $('#modalBtn1').html("Änderungen verwerfen");
+                    $('#modalBtn2').html("Änderungen speichern");
+                    
+                    //Change content from imput fields
                     $('#modalLabel').html($(this).children().eq(1).text());
                     $('#txtName').val($(this).children().eq(1).text());
                     $('#txtDescription').val($(this).children().eq(2).text());
