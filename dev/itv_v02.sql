@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2015 at 10:12 AM
+-- Generation Time: Jul 29, 2015 at 12:10 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -32,7 +32,7 @@ USE `itv_v02`;
 CREATE TABLE IF NOT EXISTS `benutzer` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `password` varchar(70) NOT NULL,
+  `password` varchar(77) NOT NULL,
   `rollen_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS `benutzer` (
 --
 
 INSERT INTO `benutzer` (`id`, `name`, `password`, `rollen_id`) VALUES
-(0, 'Testuser', '1000:2kQlFDm9GZC3CeLv2UELBiWFUFYii1pC:wAQsvYOumRIyT5EM6P+8AHqtqryFGN6F', 0),
-(1, 'Lehrer1', '1000:0KF4nhdjApq7yMuc+dGbwBjL+kAYX+sA:y2P9Hz06THRLRS5cCR4qg0P1exytBgOz', 1),
-(2, 'Admin1', '1000:QSM6k1uEOXigMfDefGEYfRoTBq2pryDF:xximApfMxOuz1BlxTSnopEZecnBZ1YOM', 2);
+(0, 'Testuser', 'sha256:1000:af6tOqH7h/6mSjk9jMyvKVIkGZclaVIa:4ZOrq16u4tE2zKQrPdIct6BF0Zmu8Zn+', 0),
+(1, 'Lehrer1', 'sha256:1000:6ooftK+MzudrVwWYpcOhczF/gT78czSE:qWdGfwEEwPdztz7D65Tukg5QCeI1Dbjf', 1),
+(2, 'Admin1', 'sha256:1000:JzHTAo1TwIOBOkvurYMBgHgbIFtcJ/eU:cHf/WiYT3rfqBmw4BcBcqXCri2DsLY8v', 2);
 
 -- --------------------------------------------------------
 
@@ -251,7 +251,8 @@ INSERT INTO `wird_beschrieben_durch` (`komponentenarten_ka_id`, `komponentenattr
 --
 ALTER TABLE `benutzer`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `Rolle` (`rollen_id`);
+  ADD UNIQUE KEY `Rolle` (`rollen_id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `benutzer_rollen`

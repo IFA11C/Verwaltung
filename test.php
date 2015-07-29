@@ -2,7 +2,7 @@
 include './php/classes/db_connect.php';
 include './php/dbq/rooms_query.php';
 echo '<br/> <b>Räume:</b> <br/>';
-$rooms = getRooms($mysqli);
+$rooms = getRooms();
 foreach ($rooms as $room) {
     echo ' raum ' . $room["Id"] . $room["Number"]  . $room["Description"] . $room["Note"].'<br/>';
 }

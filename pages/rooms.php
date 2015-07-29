@@ -7,14 +7,6 @@
     <head>
         <?php include('../fragments/default_includes.php'); ?>
         <title>Räume</title>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $(".raum").on( "click", function() {
-                    var id = $(this).find(".hidden").text();
-                    console.log("Id: " + id);
-                });
-            });
-        </script>
     </head>
     <body>
         <div class="wrapper">
@@ -58,41 +50,102 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            
-                            <form style="text-align: right;">
-                                <button class="btn btn-success">Neu +</button>
+                            <form class="pull-right">
+                                <button class="btn btn-info" type="button" onclick="Add()">Neu</button>
                             </form>
                         </div>
-                        
-                        
-                        
-                        <div class="modal fade" id="modalAddRoom" tabindex="-1" role="dialog" aria-labelledby="modalAddRoom">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="meinModalLabel">neuen Raum hinzufügen</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                                        <button type="button" class="btn btn-primary">Raum speichern</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="modalLabel"></h4>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="txtName">Raumnummer</label>
+                            <input placeholder="Raumnummer" id="txtRoomNumber" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtRoom">Bezeichnung</label>
+                            <input placeholder="Bezeichnung" id="txtDescription" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtSupplier">Notiz</label>
+                            <input placeholder="Notiz" id="txtNote" class="form-control" type="text"/>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+        <script>
+            function Add(){
+                $('#modalLabel').html("Raum hinzufügen");
+                
+                //Change button text
+                $('#modalBtn1').html("Abbrechen");
+                $('#modalBtn2').html("Raum hinzufügen");
+                
+                //Clear values
+                $('#modal-edit').find('input').each( function () {
+                    $(this).val('');
+                });
+                
+                $('#modal-edit').modal('show');
+            };
+            
+            $(document).ready(function(){
+                $('table tr').on('click', function(){
+                    
+                    //Change button text
+                    $('#modalBtn1').html("Änderungen verwerfen");
+                    $('#modalBtn2').html("Änderungen speichern");
+                    
+                    //Change content from imput fields
+                    $('#modalLabel').html($(this).children().eq(1).text());
+                    $('#txtRoomNumber').val($(this).children().eq(1).text());
+                    $('#txtDescription').val($(this).children().eq(2).text());
+                    $('#txtNote').val($(this).children().eq(3).text());
+                    
+                    $('#modal-edit').modal('show');
+                });
+            });
+            
+            $(document).ready(function() {
+                $('#modalBtn2').on( "click", function() {
+                    alert("hallo1");
+                    $.ajax({
+                        url: '../php/classes/room.php',
+                        type: 'post',
+                        data: { "call_InsertRoom": "1", 
+                            "post_roomID": $('#txtRoomNumber').val($(this).children().eq(1).text()),
+                            "post_description": $('#txtDescription').val($(this).children().eq(2).text()),  
+                            "post_note": $('#txtNote').val($(this).children().eq(3).text())},
+                        success: function(response) { console.log(response); } 
+                    });
+
+                    alert('Hallo');
+                });
+            });
+
+            $(document).ready(function() {
+                $(".raum").on( "click", function() {
+                    var id = $(this).find(".hidden").text();
+                    console.log("Id: " + id);
+                });
+            });
+        </script>
     </body>
 </html>

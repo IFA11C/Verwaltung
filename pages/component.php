@@ -23,7 +23,7 @@
                                 Hardwareverwaltung
                             </h1>
                             
-                            <table class="table table-responsive">
+                            <table id="" class="table table-responsive">
                               <thead>
                                   <tr>
                                       <th>#</th>
@@ -74,12 +74,15 @@
                                   </tr>
                               </tbody>
                             </table>
+                            <form class="pull-right">
+                                <button class="btn btn-info" type="button" onclick="Add()">Neu</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -95,56 +98,69 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Name" id="txtRoom" class="form-control" type="text"/>
+                            <input placeholder="Raum" id="txtRoom" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtSupplier">Lieferant</label>
-                            <input placeholder="Name" id="txtSupplier" class="form-control" type="text"/>
+                            <input placeholder="Lieferant" id="txtSupplier" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
-                            <input placeholder="Name" id="txtPurchaseDate" class="form-control" type="text"/>
+                            <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
-                            <input placeholder="Name" id="txtWarrantyInYears" class="form-control" type="text"/>
+                            <input placeholder="Garantie" id="txtWarrantyInYears" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Name" id="txtDescription" class="form-control" type="text"/>
+                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
                         </div>
                     </div>
                     
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
+                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
                     </div>
                     </div>
                 </div>
             </div>
         
         <script>
+            function Add(){
+                $('#modalLabel').html("Komponente hinzufügen");
+                
+                //Change button text
+                $('#modalBtn1').html("Abbrechen");
+                $('#modalBtn2').html("Komponente hinzufügen");
+                
+                //Clear values
+                $('#modal-edit').find('input').each( function () {
+                    $(this).val('');
+                });
+                
+                $('#modal-edit').modal('show');
+            };
+            
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-                  tableRowArr = [];
-                    for ( var i = 1; i < table.rows.length; i++ ) {
-                        tableRowArr.push({
-                            name: table.rows[i].cells[0].innerHTML,
-                            room: table.rows[i].cells[1].innerHTML,
-                            supplier: table.rows[i].cells[2].innerHTML,
-                            howObtained: table.rows[i].cells[3].innerHTML,
-                            howOftenWorn: table.rows[i].cells[4].innerHTML,
-                            whereMade: table.rows[i].cells[5].innerHTML,
-                            hasGraphic: table.rows[i].cells[6].innerHTML
-                        });
-                    }
-                  $(this).find('td').each (function() {
-                    array.
-                  });     
-                  $('#modalLabel').html("Hallo Welt");
-                  $('#modal-edit').modal('show');
+                    
+                    //Change button text
+                    $('#modalBtn1').html("Änderungen verwerfen");
+                    $('#modalBtn2').html("Änderungen speichern");
+                    
+                    //Change content from imput fields
+                    $('#modalLabel').html($(this).children().eq(1).text());
+                    $('#txtName').val($(this).children().eq(1).text());
+                    $('#txtRoom').val($(this).children().eq(2).text());
+                    $('#txtSupplier').val($(this).children().eq(3).text());
+                    $('#txtPurchaseDate').val($(this).children().eq(4).text());
+                    $('#txtWarrantyInYears').val($(this).children().eq(5).text());
+                    $('#txtDescription').val($(this).children().eq(6).text());
+                    
+                    $('#modal-edit').modal('show');
                 });
-              });
+            });
         </script>
     </body>
 </html>

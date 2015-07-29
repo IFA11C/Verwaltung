@@ -11,14 +11,36 @@ html, body {
     user-select: none;
 }
 
-a:focus
-{
+a:focus, a:active {
+    outline: 0;
+}
+
+.btn, .btn:focus, .btn:active, .btn:before, .btn:after {
     outline: none;
+}
+
+input::-moz-focus-inner { 
+  border: 0; 
+}
+
+button::-moz-focus-inner {
+    border: 0;
 }
 
 a:hover {
     text-decoration: none;
     cursor: pointer;
+}
+
+thead
+{
+    background-color: #529B8B;
+    color: #FFF;
+}
+
+tbody tr:nth-child(even)
+{
+    background-color: #FFF;
 }
 
 tbody tr:nth-child(odd)
@@ -146,6 +168,13 @@ h1, h2, h3 {
     background-color: #fff;
 }
 
+.page-header {
+    border-color: #808080;
+    font-weight: 300;
+    //color: #00998F;
+    color: #424242;
+}
+
 /*.form-control {
 	cursor: text;
 }*/
@@ -188,4 +217,14 @@ h1, h2, h3 {
 
 .hardware-info {
     padding-bottom: 10px;
+}
+
+.btn-info{
+    background-color: #529B8B;
+    border: #529B8B 1px solid;
+}
+
+.btn-info:hover, .btn-info:focus {
+    background-color: #589B9B;
+    border: #529B8B 1px solid;
 }
