@@ -60,7 +60,7 @@
                             </table>
                             
                             <form style="text-align: right;">
-                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#modalAddRoom">Neu +</button>
+                                <button class="btn btn-success" type="button" data-toggle="modal" data-target="#modalAddRoom">Neu</button>
                             </form>
                         </div>
                         <!-- modal -->
@@ -69,18 +69,27 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="meinModalLabel">neuen Raum hinzufügen</h4>
+                                        <h4 class="modal-title" id="meinModalLabel">Neuen Raum hinzufügen</h4>
                                     </div>
                                     <div class="modal-body">
                                         <form>
                                             <div class="form-group">
-                                                
+                                                <label class="control-label" for="txtRaumnummer">Raumnummer</label>
+                                                <input type="text" placeholder="Raumnummer" id="txtRaumnummer" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="txtBezeichnung">Bezeichnung</label>
+                                                <input type="text" placeholder="Bezeichnung" id="txtRaumnummer" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="txtNotiz">Notiz</label>
+                                                <input type="text" placeholder="Notiz" id="txtRaumnummer" class="form-control" />
                                             </div>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                                        <button type="button" class="btn btn-primary">Raum speichern</button>
+                                        <button type="button" class="btn btn-warning" data-dismiss="modal">Schließen</button>
+                                        <button type="button" class="btn btn-success">Raum hinzufügen</button>
                                     </div>
                                 </div>
                             </div>
