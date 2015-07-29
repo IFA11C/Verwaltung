@@ -21,6 +21,10 @@ a:hover {
     cursor: pointer;
 }
 
+.center {
+    text-align: center;
+}
+
 .wrapper, .row {
     height: 100%;
     margin-left: 0;
