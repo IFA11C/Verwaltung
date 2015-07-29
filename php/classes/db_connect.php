@@ -7,8 +7,8 @@
  * Setzen des Charsets UTF-8
  */
 
-define("HOST", "192.168.10.1"); 			// The host you want to connect to. 
-define("USER", "ultralord"); 		// The database username. 
+define("HOST", "192.168.10.1"); 		 // The host you want to connect to. 
+define("USER", "ultralord");          	    	 // The database username. 
 define("PASSWORD", "1234");                      // The database password. 
 define("DATABASE", "itv_v02");                   // The database name.
 

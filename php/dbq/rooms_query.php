@@ -32,7 +32,8 @@ function getRooms() {
 /**
  * Diese Funktion gibt alle Räume zurück 
  */
-function insertRooms($number,$name,$note,$mysqli) {
+function insertRooms($number,$name,$note) {
+    global $mysqli;
     if ($insert_stmt = $mysqli->prepare("INSERT INTO `raeume` (`r_nr`, `r_bezeichnung`,`r_notiz`) VALUES ( ?, ?, ?)")) {
         $insert_stmt->bind_param('sss', $number, $name, $note);
         // Execute the prepared query.
