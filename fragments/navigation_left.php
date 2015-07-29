@@ -5,14 +5,7 @@
     $roomsUrl = "./rooms.php";
 ?>
 <!-- Naviagtion -->
-    <!-- This should expand the navigation if it is in Icon mode, but for some reason it doesn't.
-    <ul class="nav">
-        <li>
-            <a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a>
-        </li>
-    </ul>
-    -->
-
+<div class="col col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
     <!-- Expaneded Navigation -->
     <ul class="nav hidden-xs" id="lg-menu">
         <li>
@@ -53,5 +46,9 @@
             </a>
         </li>
     </ul>
+    <div class="hidden-xs">
+        <img id="sidebar-footer" src="images/Logo.png"/>
+    </div>
     <!-- /Icon only Navigation -->
+</div>
 <!-- /Naviagtion -->
