@@ -2,7 +2,7 @@
 /**
  * Einbindung Globaler Konfigurationen
  */
-include_once('/../classes/db_connect.php');
+include_once('../php/classes/db_connect.php');
 
 /**
  * Diese Funktion gibt Informationen für den spezifizieren Benutzer zurück 

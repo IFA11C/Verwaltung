@@ -10,19 +10,22 @@
     <!-- Expaneded Navigation -->
     <ul class="nav hidden-xs" id="lg-menu">
         <li>
-            <a href="<?php echo($homeUrl); ?>"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;Startseite</a>
+            <a href="<?php echo($homeUrl); ?>"><span class="glyphicon glyphicon-home"></span><span class="navigationText">Startseite</span></a>
         </li>
         <li>
-            <a href="<?php echo($hardwareUrl); ?>"><span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Hardware</a>
+            <a href="<?php echo($hardwareUrl); ?>"><span class="glyphicon glyphicon-list"></span><span class="navigationText">Hardware</span></a>
         </li>
         <li>
-            <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;Eigenschaften</a>
+            <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span><span class="navigationText">Eigenschaften</span></a>
         </li>
         <li>
-            <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Räume</a>
+            <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span><span class="navigationText">Räume</span></a>
         </li>
         <li>
-            <a href="<?php echo($userUrl); ?>"><span class="glyphicon glyphicon-eject"></span>&nbsp;&nbsp;Abmelden</a>
+            <span>&nbsp;</span>
+        </li>
+        <li>
+            <a href="<?php echo($userUrl); ?>"><span class="glyphicon glyphicon-eject"></span><span class="navigationText">Abmelden</span></a>
         </li>
     </ul>
     <!-- /Expaneded Navigation -->
