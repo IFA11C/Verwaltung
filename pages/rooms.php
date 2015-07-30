@@ -93,6 +93,7 @@
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
+                    
                     var ziel = "./roomComponents.php?" + id;
                     window.location.href=ziel;
                 });
