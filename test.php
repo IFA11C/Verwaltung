@@ -22,6 +22,22 @@ foreach ($rooms as $room) {
                 <button name="btnUpdate" type="submit" class="btn btn-primary">U</button>
                 <button name="btnRemove" type="submit" class="btn btn-primary">D</button>
             </form>
+            <!--<table>
+                <?php
+                    $rooms = getRooms();
+
+                    do
+                    {
+                        $id = $rooms["Id"];
+                        $nr = $rooms["Number"];
+                        $des = $rooms["Description"];
+                        $note = $rooms["Note"];
+
+                        echo "<tr><td>$id</td><td>$nr</td><td>$des</td><td>$note</td>";
+
+                    } while ($id != NULL)
+                ?>
+            </table>-->
         </div>
     </body>
 </html>
