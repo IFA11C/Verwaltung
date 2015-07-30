@@ -1,6 +1,7 @@
 <?php
     include '../php/dbq/all_components_query.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
     <head>

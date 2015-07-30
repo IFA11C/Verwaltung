@@ -1,5 +1,13 @@
 <?php
-    include '../php/classes/db_connect.php';
+    include '../php/dbq/component_query.php';
+    
+    $componentID = filter_input(INPUT_GET, 'Id');
+    $components = getHardwareAttribute($componentID);
+    $component = [];
+    if(sizeof($components != 0)){
+        $component = $components[0];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -19,19 +27,53 @@
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
-                            <h1 class="page-header">PC 0056 <a class="btn btn-info pull-right" onclick="EditComponent()">Bearbeiten</a></h1>
+                            <h1 class="page-header" id="componentName"><?php echo $component['Type'] ?> <a class="btn btn-info pull-right" onclick="EditComponent()">Bearbeiten</a></h1>
 
                             <div class="hardware-info">
                                 <div class="row">
                                     <div class="col col-lg-6">
-                                        <h4 id="name">Name Asus 7594</h4>
-                                        <h4 id="room">Raum 45.110</h4>
-                                        <h4 id="supplier">Lieferant Amazon</h4>
+                                        <?php
+                                            if(sizeof($components != 0)){
+                                                if (isset($component['Room']))
+                                                {
+                                                    echo "<h4 id='roomDescription'>Raumnummer: "
+                                                    .$component['Room']
+                                                    ."</h4>";
+                                                }
+
+                                                if (isset($component['PDate']))
+                                                {
+                                                    echo "<h4 id='purchaseDate'>Einkaufsdatum: "
+                                                    .$component['PDate']
+                                                    ."</h4>";
+                                                }
+                                                if (isset($component['Warranty']))
+                                                {
+                                                    echo "<h4 id='warranty'>Garantie in Jahren: "
+                                                    .$component['Warranty']
+                                                    ."</h4>";
+                                                }
+                                            }
+                                        ?>
                                     </div>
                                     <div class="col col-lg-6">
-                                        <h4 id="purchaseDate">Einkaufsdatum 20.06.2006</h4>
-                                        <h4 id="warranty">Garantie in Jahren 20</h4>
-                                        <h4 id="description">Beschreibung aasdfasdfsdafasdf</h4>
+                                        <?php
+                                            if(sizeof($components != 0)){
+                                                if (isset($component['Manufacturer']))
+                                                {
+                                                    echo "<h4 id='manufacturer'>Lieferant: "
+                                                    .$component['Manufacturer']
+                                                    ."</h4>";
+                                                }
+
+                                                if (isset($component['Note']))
+                                                {
+                                                    echo "<h4 id='note'>Beschreibung: "
+                                                    .$component['Note']
+                                                    ."</h4>";
+                                                }
+                                            }
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -46,26 +88,17 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>1</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                                  <tr>
-                                      <td>2</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                                  <tr>
-                                      <td>3</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                                  <tr>
-                                      <td>4</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
+                                <?php
+                                    foreach ($components as $component) {
+                                        echo "<tr class='component'><td>"
+                                        .$component['AttributID']
+                                        ."</td><td>"
+                                        .$component['Description']
+                                        ."</td><td>"
+                                        .$component["Value"]
+                                        ."</td></tr>";
+                                    }
+                                ?>
                               </tbody>
                             </table>
                             <form class="pull-right">
