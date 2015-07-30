@@ -1,5 +1,6 @@
 <?php
     include '../php/dbq/component_query.php';
+    include '../php/dbq/attribute_query.php';
     
     $componentID = filter_input(INPUT_GET, 'Id');
     $components = getHardwareAttribute($componentID);
@@ -7,7 +8,7 @@
     if(!empty($components)){
         $component = $components[0];
     }
-
+    $attributes = getAttributes();
 ?>
 
 <!DOCTYPE html>
@@ -179,22 +180,36 @@
                         <div class="tab-content">
                             <div id="home" class="tab-pane fade in active">
                                 <div class="form-group">
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                                    <?php if(!empty($attributes))
+                                    {
+                                        foreach($attributes as $attribute) {
+                                            $id = $attribute["kat_id"];
+                                            $description = $attribute["kat_bezeichnung"];
+                                            echo '<label class="checkbox-inline"><input type="checkbox" name="'
+                                            .$id
+                                            .'">'
+                                            .$description
+                                            . '</label>';    
+                                        }
+                                    } 
+                                    ?> 
                                 </div>
                             </div>
                             <div id="menu1" class="tab-pane fade">
                                 <div class="form-group">
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
+                                    <?php if(!empty($attributes))
+                                    {
+                                        foreach($attributes as $attribute) {
+                                            $id = $attribute["kat_id"];
+                                            $description = $attribute["kat_bezeichnung"];
+                                            echo '<label class="checkbox-inline"><input type="checkbox" name="'
+                                            .$id
+                                            .'">'
+                                            .$description
+                                            . '</label>';    
+                                        }
+                                    } 
+                                    ?> 
                                 </div>
                             </div>
                         </div>
