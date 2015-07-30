@@ -4,7 +4,7 @@
     $componentID = filter_input(INPUT_GET, 'Id');
     $components = getHardwareAttribute($componentID);
     $component = [];
-    if(sizeof($components != 0)){
+    if(!empty($components)){
         $component = $components[0];
     }
 
@@ -27,13 +27,20 @@
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
-                            <h1 class="page-header" id="componentName"><?php echo $component['Type'] ?> <a class="btn btn-info pull-right" onclick="EditComponent()">Bearbeiten</a></h1>
+                            <h1 class="page-header" id="componentName">
+                                <?php if(!empty($components))
+                                    {
+                                        echo $component['Type'];    
+                                    } 
+                                ?> 
+                                <a class="btn btn-info pull-right" onclick="EditComponent()">Bearbeiten</a>
+                            </h1>
 
                             <div class="hardware-info">
                                 <div class="row">
                                     <div class="col col-lg-6">
                                         <?php
-                                            if(sizeof($components != 0)){
+                                            if(!empty($components)){
                                                 if (isset($component['Room']))
                                                 {
                                                     echo "<h4 id='roomDescription'>Raumnummer: "
@@ -58,7 +65,7 @@
                                     </div>
                                     <div class="col col-lg-6">
                                         <?php
-                                            if(sizeof($components != 0)){
+                                            if(!empty($components)){
                                                 if (isset($component['Manufacturer']))
                                                 {
                                                     echo "<h4 id='manufacturer'>Lieferant: "
@@ -89,14 +96,16 @@
                               </thead>
                               <tbody>
                                 <?php
-                                    foreach ($components as $component) {
-                                        echo "<tr class='component'><td>"
-                                        .$component['AttributID']
-                                        ."</td><td>"
-                                        .$component['Description']
-                                        ."</td><td>"
-                                        .$component["Value"]
-                                        ."</td></tr>";
+                                    if(!empty($components)){
+                                        foreach ($components as $component) {
+                                            echo "<tr class='component'><td>"
+                                            .$component['AttributID']
+                                            ."</td><td>"
+                                            .$component['Description']
+                                            ."</td><td>"
+                                            .$component["Value"]
+                                            ."</td></tr>";
+                                        }
                                     }
                                 ?>
                               </tbody>
