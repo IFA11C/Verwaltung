@@ -16,7 +16,7 @@ if(isset($_POST['btnInsert'])) {
         
         if (empty($error_msg)) {
             if ($id = insertRooms($number, $name, $note)) {
-                header('Location: ../roomComponents.php?Id=' . $id);
+                header('Location: roomComponents.php?Id=' . $id);
             } else {
                 header('Location: ./err.php?err=Fehler beim erstellen des Raumes');
             }
