@@ -1,8 +1,11 @@
 <?php
     include '../php/dbq/rooms_query.php';
+    include '../php/dbq/all_components_query.php';
     
     $roomID = filter_input(INPUT_GET, 'Id');
+    
     $rooms = getRooms();
+    $components = getAllComponents();
     
     foreach ($rooms as $room) {
         if ($room['Id'] == $roomID) {
@@ -52,7 +55,6 @@
                             <table id="" class="table table-responsive">
                               <thead>
                                   <tr>
-                                      <th>#</th>
                                       <th>Name</th>
                                       <th>Raum</th>
                                       <th>Lieferant</th>
@@ -62,42 +64,25 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>1</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
-                                  <tr>
-                                      <td>2</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
-                                  <tr>
-                                      <td>3</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
-                                  <tr>
-                                      <td>4</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
+                                  <?php
+                                        foreach ($components as $component) {
+                                            if ($component["Room"] == $roomName) {
+                                                echo "<tr><td>"
+                                                .$component["Type"]
+                                                ."</td><td>"
+                                                .$component["Room"]
+                                                ."</td><td>"
+                                                .$component["Manufacturer"]
+                                                ."</td><td>"
+                                                .$component["PDate"]
+                                                ."</td><td>"
+                                                .$component["Warranty"]
+                                                ."</td><td>"
+                                                .$component["Note"]
+                                                ."</td></tr>";
+                                            }
+                                        }
+                                  ?>
                               </tbody>
                             </table>
                             <form class="pull-right">
