@@ -1,15 +1,12 @@
 <?php
     include('../php/classes/user.php');
     
-    if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
         User::Login();
     }
 
-    if($_SERVER['REQUEST_METHOD'] == "GET")
-    {
-        if(isset($_GET["code"]))
-        {
+    if($_SERVER['REQUEST_METHOD'] == "GET") {
+        if(isset($_GET["code"])) {
             $code = $_GET["code"];
             switch($code) {
                 case 403:
@@ -22,6 +19,9 @@
                     $message = "Erfolgreich abgemeldet.";
                     break;
             }
+        }
+        else if(User::getRole() != '') {
+            header("Location: ./index.php");
         }
     }
 ?>
