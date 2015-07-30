@@ -1,5 +1,7 @@
 <?php
     include '../php/dbq/all_components_query.php';
+    include '../php/dbq/rooms_query.php';
+    include '../php/dbq/componentType_query.php';
 ?>
 
 <!DOCTYPE html>
@@ -77,22 +79,43 @@
                     </div>
                     <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
                         <div class="modal-body">
-
                             <div class="form-group">
-                                <label class="control-label">Name</label>
-                                <input placeholder="Art" class="form-control" type="number" name="komponentenart_ka_id"/>
+                                <label class="control-label">Type</label>
+                                <select name="komponentenart_ka_id" class='form-control'>
+                                <?php
+                                    $types = getComponentTypes();
+                                    foreach($types as $type) {
+                                        $typeId = $type["Id"];
+                                        $componentType = $type["ComponentType"];
+                                        echo("<option value='$typeId'>$componentType</option>");
+                                    }
+                                ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Raum</label>
-                                <input placeholder="Raum"  class="form-control" type="number" name="raeume_r_id"/>
+                                <select name="raeume_r_id" class='form-control'>
+                                <?php 
+                                    $rooms = getRooms();
+                                    foreach($rooms as $room) {
+                                        $roomId = $room["Id"];
+                                        $roomNumber = $room["Number"];
+                                        $roomName = $room["Description"];
+                                        echo("<option value='$roomId'>$roomNumber - $roomName</option>");
+                                    }
+                                ?>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" >Einkaufsdatum</label>
-                                <input placeholder="Einkaufsdatum" class="form-control" type="text" name="k_einkaufsdatum"/>
+                                <label class="control-label">Einkaufsdatum</label>
+                                <div class="input-group">
+                                    <input id="datepicker" placeholder="Einkaufsdatum" class="form-control" type="text" name="k_einkaufsdatum"/>
+                                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Garantie in Jahren</label>
-                                <input placeholder="Garantie" class="form-control" type="text" name="k_gewaehrleistungsdauer"/>
+                                <input placeholder="Garantie" class="form-control" type="number" name="k_gewaehrleistungsdauer"/>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Hersteller</label>
@@ -119,10 +142,22 @@
             };
             
             $(document).ready(function(){
-                $('table tr').on('click', function(){
+                $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+            
+                $('table tr').on('click', function() {
                     id = $(this).find(".hidden").text();
                     var ziel = "./componentItems.php?Id=" + id;
                     window.location.href=ziel;
+                });
+                
+                $("#datepicker").datepicker({
+                    changeMonth: true,//this option for allowing user to select month
+                    changeYear: true, //this option for allowing user to select from year range
+                    dateFormat: 'yy-mm-dd',
+                    monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+                    dayNames: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+                    dayNamesShort: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+                    dayNamesMin: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
                 });
             });
         </script>
