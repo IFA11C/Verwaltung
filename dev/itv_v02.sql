@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 30, 2015 at 12:07 PM
+-- Generation Time: Jul 30, 2015 at 01:11 PM
 -- Server version: 5.6.26-log
 -- PHP Version: 5.5.12
 
@@ -68,25 +68,6 @@ INSERT INTO `benutzer_rollen` (`rollen_id`, `rollen_beschreibung`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hardware_in_raum`
---
-
-CREATE TABLE IF NOT EXISTS `hardware_in_raum` (
-  `sir_k_id` int(11) NOT NULL,
-  `sir_r_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `hardware_in_raum`
---
-
-INSERT INTO `hardware_in_raum` (`sir_k_id`, `sir_r_id`) VALUES
-(2, 2),
-(1, 4);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `komponente_hat_attribute`
 --
 
@@ -120,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `komponenten` (
   `k_notiz` varchar(1024) DEFAULT NULL,
   `k_hersteller` varchar(45) DEFAULT NULL,
   `komponentenarten_ka_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komponenten`
@@ -128,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `komponenten` (
 
 INSERT INTO `komponenten` (`k_id`, `raeume_r_id`, `lieferant_l_id`, `k_einkaufsdatum`, `k_gewaehrleistungsdauer`, `k_notiz`, `k_hersteller`, `komponentenarten_ka_id`) VALUES
 (1, 1, 1, '2015-07-13', 2, 'something', 'Supertek', 0),
-(2, 3, 1, '2015-07-20', 4, 'something something neue notiz', 'Awesome Inc', 1),
+(2, 3, 1, '2015-07-20', 4, 'test', 'Awesome Inc', 1),
 (3, 4, 1, '2015-07-30', 5, 'noch eine notiz', 'Not as good', 2);
 
 -- --------------------------------------------------------
@@ -161,7 +142,7 @@ INSERT INTO `komponentenarten` (`ka_id`, `ka_komponentenart`) VALUES
 CREATE TABLE IF NOT EXISTS `komponentenattribute` (
   `kat_id` int(11) NOT NULL,
   `kat_bezeichnung` varchar(25) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komponentenattribute`
@@ -170,8 +151,7 @@ CREATE TABLE IF NOT EXISTS `komponentenattribute` (
 INSERT INTO `komponentenattribute` (`kat_id`, `kat_bezeichnung`) VALUES
 (1, 'CPU'),
 (2, 'GPU'),
-(3, 'Netzwerkkarte'),
-(4, 'Wlan Chip');
+(3, 'Netzwerkkarte');
 
 -- --------------------------------------------------------
 
@@ -227,6 +207,25 @@ INSERT INTO `raeume` (`r_id`, `r_nr`, `r_bezeichnung`, `r_notiz`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `software_in_raum`
+--
+
+CREATE TABLE IF NOT EXISTS `software_in_raum` (
+  `sir_k_id` int(11) NOT NULL,
+  `sir_r_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `software_in_raum`
+--
+
+INSERT INTO `software_in_raum` (`sir_k_id`, `sir_r_id`) VALUES
+(2, 2),
+(1, 4);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wird_beschrieben_durch`
 --
 
@@ -260,13 +259,6 @@ ALTER TABLE `benutzer`
 --
 ALTER TABLE `benutzer_rollen`
   ADD PRIMARY KEY (`rollen_id`);
-
---
--- Indexes for table `hardware_in_raum`
---
-ALTER TABLE `hardware_in_raum`
-  ADD PRIMARY KEY (`sir_k_id`,`sir_r_id`),
-  ADD KEY `sir_r_id` (`sir_r_id`);
 
 --
 -- Indexes for table `komponente_hat_attribute`
@@ -310,6 +302,13 @@ ALTER TABLE `raeume`
   ADD PRIMARY KEY (`r_id`);
 
 --
+-- Indexes for table `software_in_raum`
+--
+ALTER TABLE `software_in_raum`
+  ADD PRIMARY KEY (`sir_k_id`,`sir_r_id`),
+  ADD KEY `sir_r_id` (`sir_r_id`);
+
+--
 -- Indexes for table `wird_beschrieben_durch`
 --
 ALTER TABLE `wird_beschrieben_durch`
@@ -332,10 +331,15 @@ ALTER TABLE `benutzer`
 ALTER TABLE `benutzer_rollen`
   MODIFY `rollen_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `komponenten`
+--
+ALTER TABLE `komponenten`
+  MODIFY `k_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `komponentenattribute`
 --
 ALTER TABLE `komponentenattribute`
-  MODIFY `kat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `kat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `lieferant`
 --
@@ -357,17 +361,10 @@ ALTER TABLE `benutzer`
   ADD CONSTRAINT `benutzer_ibfk_1` FOREIGN KEY (`rollen_id`) REFERENCES `benutzer_rollen` (`rollen_id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `hardware_in_raum`
---
-ALTER TABLE `hardware_in_raum`
-  ADD CONSTRAINT `hardware_in_raum_ibfk_1` FOREIGN KEY (`sir_r_id`) REFERENCES `raeume` (`r_id`),
-  ADD CONSTRAINT `hardware_in_raum_ibfk_2` FOREIGN KEY (`sir_k_id`) REFERENCES `komponenten` (`k_id`);
-
---
 -- Constraints for table `komponente_hat_attribute`
 --
 ALTER TABLE `komponente_hat_attribute`
-  ADD CONSTRAINT `fk_komponenten_has_komponentenattribute_komponenten1` FOREIGN KEY (`komponenten_k_id`) REFERENCES `komponenten` (`k_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_komponenten_has_komponentenattribute_komponenten1` FOREIGN KEY (`komponenten_k_id`) REFERENCES `komponenten` (`k_id`),
   ADD CONSTRAINT `fk_komponenten_has_komponentenattribute_komponentenattribute1` FOREIGN KEY (`komponentenattribute_kat_id`) REFERENCES `komponentenattribute` (`kat_id`);
 
 --
@@ -377,6 +374,13 @@ ALTER TABLE `komponenten`
   ADD CONSTRAINT `fk_komponenten_haendler` FOREIGN KEY (`lieferant_l_id`) REFERENCES `lieferant` (`l_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_komponenten_komponentenarten1` FOREIGN KEY (`komponentenarten_ka_id`) REFERENCES `komponentenarten` (`ka_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `komponenten_ibfk_1` FOREIGN KEY (`raeume_r_id`) REFERENCES `raeume` (`r_id`);
+
+--
+-- Constraints for table `software_in_raum`
+--
+ALTER TABLE `software_in_raum`
+  ADD CONSTRAINT `software_in_raum_ibfk_1` FOREIGN KEY (`sir_r_id`) REFERENCES `raeume` (`r_id`),
+  ADD CONSTRAINT `software_in_raum_ibfk_2` FOREIGN KEY (`sir_k_id`) REFERENCES `komponenten` (`k_id`);
 
 --
 -- Constraints for table `wird_beschrieben_durch`
