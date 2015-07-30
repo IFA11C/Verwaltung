@@ -137,22 +137,24 @@
             </div>
         
         <script>
-            function Add(){                
-                $('#modal-edit').modal('show');
-            };
-            
-            $(document).ready(function(){
-                $.fn.modal.Constructor.prototype.enforceFocus = function() {};
-            
+            $(document).ready(function() {
+                /*
+                 * Wenn auf einen Eintrag in der Tabelle geklickt wird,
+                 * wird die Detail-Seite angezeigt.
+                 */
                 $('table tr').on('click', function() {
                     id = $(this).find(".hidden").text();
                     var ziel = "./componentItems.php?Id=" + id;
                     window.location.href=ziel;
                 });
                 
+                /*
+                 * Erstellt einen auf deutsch Localisierten DatePicker
+                 * für das Einkaufsdatum an.
+                 */
                 $("#datepicker").datepicker({
-                    changeMonth: true,//this option for allowing user to select month
-                    changeYear: true, //this option for allowing user to select from year range
+                    changeMonth: true,
+                    changeYear: true,
                     dateFormat: 'yy-mm-dd',
                     monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
                     dayNames: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
@@ -160,6 +162,13 @@
                     dayNamesMin: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
                 });
             });
+            
+            /*
+             * Zeigt das Hinzufügen Modal an wenn der "Neu" Button geklickt wird.
+             */
+            function Add() {                
+                $('#modal-edit').modal('show');
+            };
         </script>
     </body>
 </html>
