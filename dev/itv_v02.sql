@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `itv_v02`
 --
-DROP DATABASE `itv_v02`;
+-- DROP DATABASE `itv_v02`;
 CREATE DATABASE IF NOT EXISTS `itv_v02` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `itv_v02`;
 

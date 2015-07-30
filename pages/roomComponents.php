@@ -164,7 +164,7 @@
                                     <input placeholder="Notiz" name="note" id="txtNote" class="form-control" type="text"/>
                                 </div>
                             </div>
-                            <input type="hidden" name="Id" value="<?php $roomID ?>" />
+                            <input type="hidden" name="nid" value="<?php echo $roomID ?>" />
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
                                 <button type="submit" class="btn btn-success" name="btnUpdate">Änderungen speichern</button>

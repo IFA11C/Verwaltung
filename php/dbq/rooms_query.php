@@ -39,7 +39,7 @@ if (isset($_POST['btnUpdate'])) {
         
         if (empty($error_msg)) {
             if (updateRoom($id, $number, $name, $note)) {
-                header('Location: ../roomComponents.php?Id=' . $id);
+                header('Location: roomComponents.php?Id=' . $id);
             } else {
                 header('Location: ./err.php?err=Fehler beim aktualiseren des Raumes');
             }
