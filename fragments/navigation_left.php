@@ -17,10 +17,10 @@
             <a href="<?php echo($componentUrl); ?>"><span class="glyphicon glyphicon-list"></span><span class="navigationText">Komponenten</span></a>
         </li>
         <li>
-            <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;Eigenschaften</a>
+            <a href="<?php echo($softwareUrl); ?>"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;Software</a>
         </li>
         <li>
-            <a href="<?php echo($softwareUrl); ?>"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;Software</a>
+            <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;Eigenschaften</a>
         </li>
         <li>
             <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span><span class="navigationText">Räume</span></a>
