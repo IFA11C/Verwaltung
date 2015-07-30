@@ -6,6 +6,7 @@
 <html lang="de">
     <head>
         <?php include_once('../fragments/default_includes.php'); ?>
+        <script src="../js/jsform.js"></script>
         <title>Räume</title>
     </head>
     <body>
@@ -26,6 +27,7 @@
                                         <th>Nummer</th>
                                         <th>Bezeichnung</th>
                                         <th>Notiz</th>
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,15 +35,17 @@
                                         $rooms = getRooms();
                                         
                                         foreach ($rooms as $room) {
-                                            echo "<tr class='raum'><td class='hidden'>"
-                                            .$room['Id']
-                                            ."</td><td>"
-                                            .$room['Number']
-                                            ."</td><td>"
-                                            .$room["Description"]
-                                            ."</td><td>"
-                                            .$room["Note"]
-                                            ."</td></tr>";
+                                            echo("
+                                                <tr class='raum'>
+                                                    <td class='hidden'>".$room['Id']."</td>
+                                                    <td class='clickable'>".$room['Number']."</td>
+                                                    <td class='clickable'>".$room["Description"]."</td>
+                                                    <td class='clickable'>".$room["Note"]."</td>
+                                                    <td class='delete-column'>
+                                                        <button name='btnRemove' class='delete-button pull-right'><span class='glyphicon glyphicon-remove-sign'></span>
+                                                    </td>
+                                                </tr>"
+                                             );
                                         }
                                     ?>
                                 </tbody>
@@ -93,12 +97,33 @@
             };
             
             $(document).ready(function(){
-                $('table tr').on('click', function(){
-                    id = $(this).find(".hidden").text();
+                $('table tr .clickable').on('click', function(){
+                    var id = $(this).parent().find(".hidden").text();
                     var ziel = "./roomComponents.php?Id=" + id;
-                    window.location.href=ziel;
+                    window.location.href = ziel;
+                });
+                
+                $('table tr .delete-column').on('click', function(){
+                    var id = $(this).parent().find(".hidden").text();
+                    postDelete(id);
                 });
             });
+            
+            function postDelete(id) {
+                // The rest of this code assumes you are not using a library.
+                // It can be made less wordy if you use one.
+                var form = document.createElement("form");
+                form.setAttribute("method", "post");
+                form.setAttribute("action", "<?php echo($_SERVER["PHP_SELF"]); ?>");
+                
+                var idField = addHiddenField("nid", id);
+                var btnRemove = addHiddenField("btnRemove", 1);
+                form.appendChild(btnRemove);
+                form.appendChild(idField);
+                
+                document.body.appendChild(form);
+                form.submit();
+            }
         </script>
     </body>
 </html>
