@@ -1,5 +1,4 @@
 <?php
-    include '../php/classes/db_connect.php';
     include '../php/dbq/rooms_query.php';
 ?>
 
@@ -34,7 +33,9 @@
                                         $rooms = getRooms();
                                         
                                         foreach ($rooms as $room) {
-                                            echo "<tr class='raum'><td>"
+                                            echo "<tr class='raum'><td class='hidden'>"
+                                            .$room['Id']
+                                            ."</td><td>"
                                             .$room['Number']
                                             ."</td><td>"
                                             .$room["Description"]
@@ -61,27 +62,27 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title">Raum hinzufügen</h4>
                     </div>
-                    <form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="POST">
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="control-label" for="txtName">Raumnummer</label>
-                                <input placeholder="Raumnummer" id="txtRoomNumber" class="form-control" type="text"/>
+                                <label class="control-label">Raumnummer</label>
+                                <input placeholder="Raumnummer" name="nbr" class="form-control" type="text"/>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="txtRoom">Bezeichnung</label>
-                                <input placeholder="Bezeichnung" id="txtDescription" class="form-control" type="text"/>
+                                <label class="control-label">Bezeichnung</label>
+                                <input placeholder="Bezeichnung" name="name" class="form-control" type="text"/>
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="txtSupplier">Notiz</label>
-                                <input placeholder="Notiz" id="txtNote" class="form-control" type="text"/>
+                                <label class="control-label">Notiz</label>
+                                <input placeholder="Notiz" name="note" class="form-control" type="text"/>
                             </div>
                         </div>
                     
                         <div class="modal-footer">
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Abbrechen</button>
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Raum hinzufügen</button>
+                            <button type="submit" class="btn btn-success" name="btnInsert">Raum hinzufügen</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,17 +94,11 @@
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-                    var ziel = "./roomComponents.php";
+                    id = $(this).find(".hidden").text();
+                    var ziel = "./roomComponents.php?Id=" + id;
                     window.location.href=ziel;
                 });
             });
-
-//            $(document).ready(function() {
-//                $(".raum").on( "click", function() {
-//                    var id = $(this).find(".hidden").text();
-//                    console.log("Id: " + id);
-//                });
-//            });
         </script>
     </body>
 </html>

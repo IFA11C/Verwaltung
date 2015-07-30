@@ -16,8 +16,8 @@ if (isset($_POST['btnInsert'])) {
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if (empty($error_msg)) {
-            if ($id = insertRooms($number, $name, $note, $mysqli)) {
-                header('Location: ../room.php?ID=' . $id);
+            if ($id = insertRooms($number, $name, $note)) {
+                header('Location: ../roomComponents.php?ID=' . $id);
             } else {
                 header('Location: ../err.php?err=Fehler beim einfügen eines Raumes');
             }
