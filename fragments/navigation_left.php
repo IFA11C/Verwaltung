@@ -1,7 +1,7 @@
 <?php
     $homeUrl = "./index.php";
     $componentUrl = "./component.php";
-    $propertiesUrl = "./hardwarePropertys.php";
+    $propertiesUrl = "./componentProperties.php";
     $softwareUrl = "./software.php";
     $roomsUrl = "./rooms.php";
     $logoutUrl = "./logout.php";

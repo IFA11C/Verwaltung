@@ -1,5 +1,28 @@
 <?php
-    include '../php/classes/db_connect.php';
+    include('../php/dbq/attribute_query.php');
+    
+    if($_SERVER['REQUEST_METHOD'] == "POST") {   
+        if(isset($_POST["action"])) {
+            $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            switch($action) {
+                case 0:
+                    add();
+                    break;
+                case 1:
+                    update();
+                    break;
+            }
+        }
+    }
+           
+   function add() {
+       header("Location: ../pages/index.php?add");
+   }
+           
+   function update() {
+       header("Location: ../pages/index.php?update");
+   }
 ?>
 
 <!DOCTYPE html>
@@ -19,38 +42,29 @@
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
-                            <h1 class="page-header">Hardware Eigenschaften</h1>
-
+                            <h1 class="page-header">Komponenten Eigenschaften</h1>
                             <table class="table table-responsive">
-                              <thead>
-                                  <tr>
-                                      <th>#</th>
-                                      <th>Name</th>
-                                      <th>Beschreibung</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>1</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                                  <tr>
-                                      <td>2</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                                  <tr>
-                                      <td>3</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                                  <tr>
-                                      <td>4</td>
-                                      <td>CPU</td>
-                                      <td>Prozessor</td>
-                                  </tr>
-                              </tbody>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $properties = getAttributeNames();
+                                        foreach($properties as $property) {
+                                            $id = $property["Id"];
+                                            $name = $property["Description"];
+                                            echo("
+                                                <tr>
+                                                    <td>$id</td>
+                                                    <td>$name</td>
+                                                </tr>
+                                            ");    
+                                        }
+                                    ?>
+                                </tbody>
                             </table>
                             <form class="pull-right">
                                 <button class="btn btn-info" type="button" onclick="AddHardwareProperty()">Neu</button>
@@ -68,25 +82,23 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="modal-hardware-property-label"></h4>
                     </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-group">
-                            <label class="control-label" for="txtName">Name</label>
-                            <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                        <input id="modal-hardware-property-action" name="action" type="hidden" value=""/>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label" for="txtName">Name</label>
+                                <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button id="modal-hardware-property-btn-1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
-                        <button id="modal-hardware-property-btn-2" type="button" class="btn btn-success" data-dismiss="modal"></button>
-                    </div>
-                    </div>
+
+                        <div class="modal-footer">
+                            <button id="modal-hardware-property-btn-1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
+                            <button id="modal-hardware-property-btn-2" type="submit" class="btn btn-success"></button>
+                        </div>    
+                    </form>
                 </div>
             </div>
+        </div>
         
         <script>
             function AddHardwareProperty(){
@@ -100,6 +112,7 @@
                 $('#modal-hardware-property').find('input').each( function () {
                     $(this).val('');
                 });
+                $('#modal-hardware-property-action').val(0);
                 
                 $('#modal-hardware-property').modal('show');
             };
@@ -113,9 +126,10 @@
                     $('#modal-hardware-property-btn-1').html("Änderungen verwerfen");
                     $('#modal-hardware-property-btn-2').html("Änderungen speichern");
                     
-                    //Change content from imput fields
+                    //Change content from input fields
                     $('#txtName').val($(this).children().eq(1).text());
                     $('#txtDescription').val($(this).children().eq(2).text());
+                    $('#modal-hardware-property-action').val(1);
                     
                     $('#modal-hardware-property').modal('show');
                 });
