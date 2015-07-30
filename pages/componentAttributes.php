@@ -20,7 +20,7 @@
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
                             <h1 class="page-header">Komponenten Eigenschaften</h1>
-                            <table class="table table-bordered table-responsive">
+                            <table class="table table-responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
