@@ -67,6 +67,25 @@ if (isset($_POST['btnRemove'])) {
     }
 }
 
+function getRoom($id) {
+    global $mysqli;
+    if (!$stmt = $mysqli->prepare("SELECT distinct * FROM raeume where r_id = $id")) {
+        // Could not create a prepared statement
+        header("Location: ./err.php?err=Database error: cannot prepare statement");
+        exit();
+    }
+    
+    $stmt->execute();
+    $stmt->bind_result($id, $nr, $description, $note);
+    $room = array();
+    
+    while ($stmt->fetch()) {
+        $room = array("Id" => $id, "Number" => $nr, "Description" => $description, "Note" => $note);
+    }
+    
+    return $room;   
+}
+
 /**
  * Diese Funktion gibt alle Räume zurück.
  */

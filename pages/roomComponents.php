@@ -1,20 +1,17 @@
 <?php
     include '../php/dbq/rooms_query.php';
     include '../php/dbq/all_components_query.php';
+    include '../php/dbq/software_query.php';
     
     $roomID = filter_input(INPUT_GET, 'Id');
     
-    $rooms = getRooms();
+    $room = getRoom($roomID);
+    $roomName = $room['Number'];
+    $roomDescription = $room['Description'];
+    $roomNote = $room['Note'];
+
     $components = getAllComponents();
-    
-    foreach ($rooms as $room) {
-        if ($room['Id'] == $roomID) {
-            //Raum, der in der url übergeben wird, ist selektiert
-            $roomName = $room['Number'];
-            $roomDescription = $room['Description'];
-            $roomNote = $room['Note'];
-        }
-    }
+    $softwares = getAllSoftware();
 ?>
 
 <!DOCTYPE html>
@@ -59,12 +56,11 @@
                             <table id="" class="table table-responsive">
                               <thead>
                                   <tr>
-                                      <th>Name</th>
-                                      <th>Raum</th>
-                                      <th>Lieferant</th>
+                                      <th>Type</th>
+                                      <th>Hersteller</th>
+                                      <th>Beschreibung</th>
                                       <th>Einkaufsdatum</th>
                                       <th>Garantie in Jahren</th>
-                                      <th>Beschreibung</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -74,24 +70,54 @@
                                                 echo "<tr><td>"
                                                 .$component["komponentenart_ka_id"]
                                                 ."</td><td>"
-                                                .$component["raeume_r_id"]
-                                                ."</td><td>"
                                                 .$component["k_hersteller"]
+                                                ."</td><td>"
+                                                .$component["k_notiz"]
                                                 ."</td><td>"
                                                 .$component["k_einkaufsdatum"]
                                                 ."</td><td>"
                                                 .$component["k_gewaehrleistungsdauer"]
-                                                ."</td><td>"
-                                                .$component["k_notiz"]
                                                 ."</td></tr>";
                                             }
                                         }
                                   ?>
                               </tbody>
                             </table>
+                            
                             <form class="pull-right">
                                 <button class="btn btn-info" type="button" onclick="AddComponent()">Komponente hinzufügen</button>
                             </form>
+                            <br/>
+                            <h3 class="page-header">Software</h3>
+                            <table id="" class="table table-responsive">
+                              <thead>
+                                  <tr>
+                                      <th>Type</th>
+                                      <th>Hersteller</th>
+                                      <th>Beschreibung</th>
+                                      <th>Einkaufsdatum</th>
+                                      <th>Garantie in Jahren</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <?php
+                                        foreach ($softwares as $software) {
+                                            if ($software["raeume_r_id"] == $roomName) {
+                                                echo(
+                                                    "<tr class='component'>
+                                                        <td class='hidden'>".$software['k_id']."</td>
+                                                        <td>".$software['komponentenart_ka_id']."</td>
+                                                        <td>".$software["k_hersteller"]."</td>
+                                                        <td>".$software["k_notiz"]."</td>
+                                                        <td>".$software["k_einkaufsdatum"]."</td>
+                                                        <td>".$software["k_gewaehrleistungsdauer"]."</td>
+                                                    </tr>"
+                                                );
+                                            }
+                                        }
+                                  ?>
+                              </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
