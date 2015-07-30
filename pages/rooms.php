@@ -99,13 +99,6 @@
                     window.location.href=ziel;
                 });
             });
-
-//            $(document).ready(function() {
-//                $(".raum").on( "click", function() {
-//                    var id = $(this).find(".hidden").text();
-//                    console.log("Id: " + id);
-//                });
-//            });
         </script>
     </body>
 </html>
