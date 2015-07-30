@@ -1,22 +1,12 @@
 <?php
     include '../php/classes/db_connect.php';
-    include '../php/classes/user.php';
-    
-    if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-        $func = filter_input(INPUT_POST, "post_func");
-        
-        if ($func == "insertRoom")
-        {
-            Room::insertRoom();
-        }
-    }
+    include '../php/dbq/rooms_query.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <?php include('../fragments/default_includes.php'); ?>
+        <?php include_once('../fragments/default_includes.php'); ?>
         <title>Räume</title>
     </head>
     <body>
@@ -34,36 +24,28 @@
                             <table id="rooms" class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th class="hidden">Id</th>
                                         <th>Nummer</th>
                                         <th>Bezeichnung</th>
                                         <th>Notiz</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="raum">
-                                        <td class="hidden">1</td>
-                                        <td>r102</td>
-                                        <td>Labor</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr class="raum">
-                                        <td class="hidden">2</td>
-                                        <td>r105</td>
-                                        <td>Werkstatt</td>
-                                        <td>Keine Computer vorhanden.</td>
-                                    </tr>
-                                    <tr class="raum">
-                                        <td class="hidden">3</td>
-                                        <td>r201</td>
-                                        <td>IT</td>
-                                        <td>Eine Notiz</td>
-                                    </tr>
+                                    <?php
+                                        $rooms = getRooms();
+                                        
+                                        foreach ($rooms as $room) {
+                                            echo "<tr class='raum'><td>"
+                                            .$room['Number']
+                                            ."</td><td>"
+                                            .$room["Description"]
+                                            ."</td><td>"
+                                            .$room["Note"]
+                                            ."</td></tr>";
+                                        }
+                                    ?>
                                 </tbody>
                             </table>
-                            <form class="pull-right">
-                                <button class="btn btn-info" type="button" onclick="Add()">Neu</button>
-                            </form>
+                            <button class="btn btn-info pull-right" type="button" onclick="Add()">Neu</button>
                         </div>
                     </div>
                 </div>
@@ -77,7 +59,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="modalLabel"></h4>
                     </div>
-                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+                    <form action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF') ?>" method="POST">
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="control-label" for="txtName">Raumnummer</label>
@@ -96,7 +78,6 @@
                             <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
                             <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
                         </div>
-                        <input type="hidden" name="func" value="insertRoom" />
                     </form>
                 </div>
             </div>
