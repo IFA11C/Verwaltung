@@ -73,61 +73,48 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalLabel"></h4>
+                        <h4 class="modal-title">Komponente hinzufügen</h4>
                     </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-group">
-                            <label class="control-label" for="txtName">Name</label>
-                            <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input placeholder="Name" class="form-control" type="text" name="komponentenart_ka_id"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Raum</label>
+                                <input placeholder="Raum"  class="form-control" type="text" name="raeume_r_id"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" >Einkaufsdatum</label>
+                                <input placeholder="Einkaufsdatum" class="form-control" type="text" name="k_einkaufsdatum"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Garantie in Jahren</label>
+                                <input placeholder="Garantie" class="form-control" type="text" name="k_gewaehrleistungsdauer"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Lieferant</label>
+                                <input placeholder="Lieferant"  class="form-control" type="text" name="k_hersteller"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Beschreibung</label>
+                                <input placeholder="Beschreibung" class="form-control" type="text" name="k_notiz"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtType">Typ</label>
-                            <input placeholder="Raum" id="txtType" class="form-control" type="text"/>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Abbrechen</button>
+                            <button type="submit" class="btn btn-success" name="btnInsert">Komponente hinzufügen</button>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Lieferant" id="txtRoom" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
-                            <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtWarranty">Garantie in Jahren</label>
-                            <input placeholder="Garantie" id="txtWarranty" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtManufacturer">Lieferant</label>
-                            <input placeholder="Garantie" id="txtManufacturer" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
-                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
-                    </div>
+                    </form>
                     </div>
                 </div>
             </div>
         
         <script>
-            function Add(){
-                $('#modalLabel').html("Komponente hinzufügen");
-                
-                //Change button text
-                $('#modalBtn1').html("Abbrechen");
-                $('#modalBtn2').html("Komponente hinzufügen");
-                
-                //Clear values
-                $('#modal-edit').find('input').each( function () {
-                    $(this).val('');
-                });
-                
+            function Add(){                
                 $('#modal-edit').modal('show');
             };
             

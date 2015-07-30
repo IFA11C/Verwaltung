@@ -60,7 +60,7 @@ if (isset($_POST['btnInsert'])) {
         $k_notiz = filter_input(INPUT_POST, 'k_notiz', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if (empty($error_msg)) {
             if ($id = insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer,$k_hersteller,$k_notiz)) {
-                header('Location: ../component.php?ID=' . $id);
+                header('Location: ./component.php');
             } else {
                 header('Location: ../err.php?err=Fehler beim einfügen eines Raumes');
             }
