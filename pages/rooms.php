@@ -94,8 +94,8 @@
             $(document).ready(function(){
                 $('table tr').on('click', function(){
                     
-                    //TODO
-                    alert("roomComponents aufrufen");
+                    var ziel1 = "./roomComponents.php";
+                    window.location.href=ziel;
                 });
             });
 

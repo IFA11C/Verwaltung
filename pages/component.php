@@ -144,9 +144,8 @@
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-                    alert("TODO componentItems aufrufen");
-                    
-                    //TODO: Open right ComponentItems
+                    var ziel = "./componentItems.php";
+                    window.location.href=ziel;
                 });
             });
         </script>
