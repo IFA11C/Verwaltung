@@ -73,6 +73,16 @@ tbody td:hover
     clear: both;
 }
 
+.delete-column {
+    width: 25px;
+}
+
+.delete-button {
+    border: 0px;
+    font-size: 16px;
+    background: transparent;
+}
+
 .column {
     overflow: auto;
     *zoom: 1;

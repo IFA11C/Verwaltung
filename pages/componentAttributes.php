@@ -1,28 +1,5 @@
 <?php
     include('../php/dbq/attribute_query.php');
-    
-    if($_SERVER['REQUEST_METHOD'] == "POST") {   
-        if(isset($_POST["action"])) {
-            $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
-            switch($action) {
-                case 0:
-                    add();
-                    break;
-                case 1:
-                    update();
-                    break;
-            }
-        }
-    }
-           
-   function add() {
-       header("Location: ../pages/index.php?add");
-   }
-           
-   function update() {
-       header("Location: ../pages/index.php?update");
-   }
 ?>
 
 <!DOCTYPE html>
@@ -43,31 +20,35 @@
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
                             <h1 class="page-header">Komponenten Eigenschaften</h1>
-                            <table class="table table-responsive">
+                            <table class="table table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $properties = getAttributeNames();
+                                        $properties = getAttributes();
                                         foreach($properties as $property) {
-                                            $id = $property["Id"];
-                                            $name = $property["Description"];
-                                            echo("
+                                            $id = $property["kat_id"];
+                                            $name = $property["kat_bezeichnung"];
+                                            echo('
                                                 <tr>
-                                                    <td>$id</td>
-                                                    <td>$name</td>
+                                                    <td class="clickable">'.$id.'</td>
+                                                    <td class="clickable">'.$name.'</td>
+                                                    <td class="delete-column">
+                                                        <button name="btnRemove" class="delete-button pull-right"><span class="glyphicon glyphicon-remove-sign"></span>
+                                                    </td>
                                                 </tr>
-                                            ");    
+                                            ');    
                                         }
                                     ?>
                                 </tbody>
                             </table>
                             <form class="pull-right">
-                                <button class="btn btn-info" type="button" onclick="AddHardwareProperty()">Neu</button>
+                                <button class="btn btn-info" type="button" onclick="AddHardwareProperty();">Neu</button>
                             </form>
                         </div>
                     </div>
@@ -83,11 +64,12 @@
                         <h4 class="modal-title" id="modal-hardware-property-label"></h4>
                     </div>
                     <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
-                        <input id="modal-hardware-property-action" name="action" type="hidden" value=""/>
+<!--                        <input id="modal-hardware-property-action" name="action" type="hidden" value=""/>-->
+                        <input id="modal-hardware-property-id" name="kat_id" type="hidden" value=""/>
                         <div class="modal-body">
                             <div class="form-group">
                                 <label class="control-label" for="txtName">Name</label>
-                                <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                                <input name="kat_bezeichnung" placeholder="Name" id="txtName" class="form-control" type="text"/>
                             </div>
                         </div>
 
@@ -101,7 +83,7 @@
         </div>
         
         <script>
-            function AddHardwareProperty(){
+            function AddHardwareProperty() {
                 $('#modal-hardware-property-label').html("Eigenschaft hinzufügen");
                 
                 //Change button text
@@ -114,12 +96,13 @@
                 });
                 $('#modal-hardware-property-action').val(0);
                 
+                $('#modal-hardware-property-btn-2').attr('name', 'btnInsert');
+                
                 $('#modal-hardware-property').modal('show');
             };
             
             $(document).ready(function(){
-                $('table tr').on('click', function(){
-                    
+                $('table tr .clickable').on('click', function(){
                     $('#modal-hardware-property-label').html("Hardware bearbeiten");
                     
                     //Change button text
@@ -127,13 +110,54 @@
                     $('#modal-hardware-property-btn-2').html("Änderungen speichern");
                     
                     //Change content from input fields
-                    $('#txtName').val($(this).children().eq(1).text());
-                    $('#txtDescription').val($(this).children().eq(2).text());
+                    $('#modal-hardware-property-id').val($(this).parent().children().eq(0).text());
+                    $('#txtName').val($(this).parent().children().eq(1).text());
+                    
                     $('#modal-hardware-property-action').val(1);
                     
+                    $('#modal-hardware-property-btn-2').attr('name', 'btnUpdate');
+                
                     $('#modal-hardware-property').modal('show');
                 });
+                
+                $('table tr .delete-column').on('click', function(){
+                    var id = $(this).parent().children().eq(0).text();
+                    postDelete(id);
+                });
             });
+            
+            function postDelete(id) {
+                // The rest of this code assumes you are not using a library.
+                // It can be made less wordy if you use one.
+                var form = document.createElement("form");
+                form.setAttribute("method", "post");
+                form.setAttribute("action", "<?php echo($_SERVER["PHP_SELF"]); ?>");
+                
+                var idField = addHiddenField("kat_id", id);
+                var btnRemove = addHiddenField("btnRemove", 1);
+                form.appendChild(btnRemove);
+                form.appendChild(idField);
+                
+                document.body.appendChild(form);
+                form.submit();
+            }
+            
+            function addHiddenButton(name) {
+                var button = document.createElement("button");
+                button.setAttribute("type", "hidden");
+                button.setAttribute("name", name);
+                button.click();
+                return button;
+            }
+            
+            function addHiddenField(name, value) {
+                var field = document.createElement("input");
+                field.setAttribute("type", "hidden");
+                field.setAttribute("name", name);
+                field.setAttribute("value", value);
+                
+                return field;
+            }
         </script>
     </body>
 </html>
