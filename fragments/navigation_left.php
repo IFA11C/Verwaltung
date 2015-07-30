@@ -1,6 +1,6 @@
 <?php
     $homeUrl = "./index.php";
-    $hardwareUrl = "./component.php";
+    $componentUrl = "./component.php";
     $propertiesUrl = "./componentsAttributes.php";
     $roomsUrl = "./rooms.php";
     $userUrl = "./logout.php";
@@ -13,7 +13,7 @@
             <a href="<?php echo($homeUrl); ?>"><span class="glyphicon glyphicon-home"></span><span class="navigationText">Startseite</span></a>
         </li>
         <li>
-            <a href="<?php echo($hardwareUrl); ?>"><span class="glyphicon glyphicon-list"></span><span class="navigationText">Hardware</span></a>
+            <a href="<?php echo($componentUrl); ?>"><span class="glyphicon glyphicon-list"></span><span class="navigationText">Komponenten</span></a>
         </li>
         <li>
             <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span><span class="navigationText">Eigenschaften</span></a>
@@ -38,7 +38,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo($hardwareUrl); ?>" class="text-center">
+            <a href="<?php echo($componentUrl); ?>" class="text-center">
                 <span class="glyphicon glyphicon-list"></span>
             </a>
         </li>
