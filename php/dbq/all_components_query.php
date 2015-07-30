@@ -72,7 +72,7 @@ if (isset($_POST['btnInsert'])) {
 function insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer, $k_hersteller, $k_notiz){
    
     global $mysqli;
-    if ($insert_stmt = $mysqli->prepare("INSERT INTO `komponenten` (`komponentenarten_ka_id`, `raeume_r_id`,`k_einkaufsdatum`,`k_gewaehrleistungsdauer`,`k_hersteller`,`k_notiz`,`lieferant_l_id`) VALUES ( 1, 1, 2014-10-10, 1, 1, 1,1)  ")) {
+    if ($insert_stmt = $mysqli->prepare("INSERT INTO `komponenten` (`komponentenarten_ka_id`, `raeume_r_id`,`k_einkaufsdatum`,`k_gewaehrleistungsdauer`,`k_hersteller`,`k_notiz`,`lieferant_l_id`) VALUES ( ?, ?, ?, ?, ?, ?, ?)")) {
         $insert_stmt->bind_param('ssssss', $komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum,$k_gewaehrleistungsdauer,$k_hersteller,$k_notiz);
         // Execute the prepared query.
         if (!$insert_stmt->execute()) {
