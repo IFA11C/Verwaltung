@@ -41,19 +41,19 @@
                                     foreach ($components as $component) {
                                         echo "<tr class='component'>"
                                         . "<td class='hidden'>"
-                                        .$component['Id']
+                                        .$component['k_id']
                                         ."</td><td>"
-                                        .$component['Type']
+                                        .$component['komponentenart_ka_id']
                                         ."</td><td>"
-                                        .$component["Room"]
+                                        .$component["raeume_r_id"]
                                         ."</td><td>"
-                                        .$component["PDate"]
+                                        .$component["k_einkaufsdatum"]
                                         ."</td><td>"
-                                        .$component["Warranty"]
+                                        .$component["k_gewaehrleistungsdauer"]
                                         ."</td><td>"
-                                        .$component["Manufacturer"]
+                                        .$component["k_hersteller"]
                                         ."</td><td>"
-                                        .$component["Note"]
+                                        .$component["k_notiz"]
                                         ."</td></tr>";
                                     }
                                 ?>
