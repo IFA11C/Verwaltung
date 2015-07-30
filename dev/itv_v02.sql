@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2015 at 12:10 PM
+-- Generation Time: Jul 30, 2015 at 09:45 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `benutzer_rollen` (
 
 INSERT INTO `benutzer_rollen` (`rollen_id`, `rollen_beschreibung`) VALUES
 (0, 'DEBUG Rolle'),
-(1, 'Admin'),
-(2, 'Lehrer');
+(1, 'Lehrer'),
+(2, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -209,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `raeume` (
   `r_nr` varchar(20) DEFAULT NULL COMMENT 'z.B. r014, W304, etc.',
   `r_bezeichnung` varchar(45) DEFAULT NULL COMMENT 'z.B. Werkstatt, Lager,...',
   `r_notiz` varchar(1024) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `raeume`
@@ -221,7 +221,8 @@ INSERT INTO `raeume` (`r_id`, `r_nr`, `r_bezeichnung`, `r_notiz`) VALUES
 (3, 'r001', 'Unterrichtsraum', 'notiz hier'),
 (4, 'r205', 'Wieder ein Raum', 'nix'),
 (5, 'r001', 'IT raum3', 'hier'),
-(6, 'r204', 'Lagerraum', 'sampletext');
+(6, 'r204', 'Lagerraum', 'sampletext'),
+(7, 'r999', 'Testraum', 'somethingsomethingxx');
 
 -- --------------------------------------------------------
 
@@ -251,8 +252,8 @@ INSERT INTO `wird_beschrieben_durch` (`komponentenarten_ka_id`, `komponentenattr
 --
 ALTER TABLE `benutzer`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `Rolle` (`rollen_id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD UNIQUE KEY `name` (`name`),
+  ADD KEY `rollen_id` (`rollen_id`);
 
 --
 -- Indexes for table `benutzer_rollen`
@@ -339,7 +340,7 @@ ALTER TABLE `lieferant`
 -- AUTO_INCREMENT for table `raeume`
 --
 ALTER TABLE `raeume`
-  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

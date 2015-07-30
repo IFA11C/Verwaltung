@@ -1,10 +1,10 @@
 <?php
     $homeUrl = "./index.php";
-    $hardwareUrl = "./component.php";
+    $componentUrl = "./component.php";
     $propertiesUrl = "./hardwarePropertys.php";
     $softwareUrl = "./software.php";
     $roomsUrl = "./rooms.php";
-    $userUrl = "./logout.php";
+    $logoutUrl = "./logout.php";
 ?>
 <!-- Naviagtion -->
 <div class="col col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
@@ -29,7 +29,7 @@
             <span>&nbsp;</span>
         </li>
         <li>
-            <a href="<?php echo($userUrl); ?>"><span class="glyphicon glyphicon-eject"></span><span class="navigationText">Abmelden</span></a>
+            <a href="<?php echo($logoutUrl); ?>"><span class="glyphicon glyphicon-eject"></span><span class="navigationText">Abmelden</span></a>
         </li>
     </ul>
     <!-- /Expaneded Navigation -->
