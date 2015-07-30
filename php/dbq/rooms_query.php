@@ -17,7 +17,7 @@ if (isset($_POST['btnInsert'])) {
         $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if (empty($error_msg)) {
             if ($id = insertRooms($number, $name, $note)) {
-                header('Location: ../roomComponents.php?ID=' . $id);
+                header('Location: ../roomComponents.php?Id=' . $id);
             } else {
                 header('Location: ../err.php?err=Fehler beim einfügen eines Raumes');
             }
@@ -35,7 +35,7 @@ if (isset($_POST['btnUpdate'])) {
         echo $id.$number;
         if (empty($error_msg)) {
             if (updateRoom($id, $number, $name, $note)) {
-                header('Location: ../room.php?ID=' . $id);
+                header('Location: ../roomComponents.php?Id=' . $id);
             } else {
            //     header('Location: ../../err.php?err=Fehler beim einfügen eines Raumes');
             }
