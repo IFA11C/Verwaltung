@@ -49,7 +49,7 @@ if (isset($_POST['btnUpdate'])) {
 }
 
 /*
- * Wenn der Löschen Knopf auf der Seite gedrückt wurde werden die
+ * Wenn der Löschen Knopf auf der Seite gedrückt wurde
  * wird der entsprechende Raum aus der Datenbank entfernt.
  */
 if (isset($_POST['btnRemove'])) {

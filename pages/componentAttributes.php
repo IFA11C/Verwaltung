@@ -64,7 +64,6 @@
                         <h4 class="modal-title" id="modal-hardware-property-label"></h4>
                     </div>
                     <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
-<!--                        <input id="modal-hardware-property-action" name="action" type="hidden" value=""/>-->
                         <input id="modal-hardware-property-id" name="kat_id" type="hidden" value=""/>
                         <div class="modal-body">
                             <div class="form-group">
@@ -94,7 +93,6 @@
                 $('#modal-hardware-property').find('input').each( function () {
                     $(this).val('');
                 });
-                $('#modal-hardware-property-action').val(0);
                 
                 $('#modal-hardware-property-btn-2').attr('name', 'btnInsert');
                 
@@ -109,11 +107,14 @@
                     $('#modal-hardware-property-btn-1').html("Änderungen verwerfen");
                     $('#modal-hardware-property-btn-2').html("Änderungen speichern");
                     
+                    //Clear values
+                    $('#modal-hardware-property').find('input').each( function () {
+                        $(this).val('');
+                    });
+                    
                     //Change content from input fields
                     $('#modal-hardware-property-id').val($(this).parent().children().eq(0).text());
                     $('#txtName').val($(this).parent().children().eq(1).text());
-                    
-                    $('#modal-hardware-property-action').val(1);
                     
                     $('#modal-hardware-property-btn-2').attr('name', 'btnUpdate');
                 
@@ -127,8 +128,6 @@
             });
             
             function postDelete(id) {
-                // The rest of this code assumes you are not using a library.
-                // It can be made less wordy if you use one.
                 var form = document.createElement("form");
                 form.setAttribute("method", "post");
                 form.setAttribute("action", "<?php echo($_SERVER["PHP_SELF"]); ?>");
