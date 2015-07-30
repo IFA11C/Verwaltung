@@ -47,13 +47,13 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo($propertiesUrl); ?>" class="text-center">
-                <span class="glyphicon glyphicon-tag"></span>
+            <a href="<?php echo($softwareUrl); ?>" class="text-center">
+                <span class="glyphicon glyphicon-th-large"></span>
             </a>
         </li>
         <li>
-            <a href="<?php echo($softwareUrl); ?>" class="text-center">
-                <span class="glyphicon glyphicon-th-large"></span>
+            <a href="<?php echo($propertiesUrl); ?>" class="text-center">
+                <span class="glyphicon glyphicon-tag"></span>
             </a>
         </li>
         <li>
