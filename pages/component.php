@@ -30,7 +30,7 @@
                                       <th>Raum</th>
                                       <th>Einkaufsdatum</th>
                                       <th>Garantie in Jahren</th>
-                                      <th>Lieferant</th>
+                                      <th>Hersteller</th>
                                       <th>Beschreibung</th>
                                   </tr>
                               </thead>
@@ -80,11 +80,11 @@
 
                             <div class="form-group">
                                 <label class="control-label">Name</label>
-                                <input placeholder="Name" class="form-control" type="text" name="komponentenart_ka_id"/>
+                                <input placeholder="Art" class="form-control" type="number" name="komponentenart_ka_id"/>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Raum</label>
-                                <input placeholder="Raum"  class="form-control" type="text" name="raeume_r_id"/>
+                                <input placeholder="Raum"  class="form-control" type="number" name="raeume_r_id"/>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" >Einkaufsdatum</label>
@@ -95,8 +95,8 @@
                                 <input placeholder="Garantie" class="form-control" type="text" name="k_gewaehrleistungsdauer"/>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Lieferant</label>
-                                <input placeholder="Lieferant"  class="form-control" type="text" name="k_hersteller"/>
+                                <label class="control-label">Hersteller</label>
+                                <input placeholder="Hersteller" class="form-control" type="text" name="k_hersteller"/>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Beschreibung</label>

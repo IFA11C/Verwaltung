@@ -6,7 +6,7 @@
 /**
  * Einbindung Globaler Konfigurationen
  */
-include_once '/../classes/db_connect.php';
+include_once '../php/classes/db_connect.php';
 
 /**
  * Diese Funktion gibt alle Komponenten zurück 
@@ -59,21 +59,45 @@ if (isset($_POST['btnInsert'])) {
         $k_hersteller = filter_input(INPUT_POST, 'k_hersteller', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $k_notiz = filter_input(INPUT_POST, 'k_notiz', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if (empty($error_msg)) {
-            if ($id = insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer,$k_hersteller,$k_notiz)) {
-                header('Location: ./component.php');
+            if ($id = insertComponent(
+                $komponentenart_ka_id,
+                $raeume_r_id,
+                $k_einkaufsdatum,
+                $k_gewaehrleistungsdauer,
+                $k_hersteller,
+                1, //Es gibt nur einen Lieferanten der nicht gewählt werden soll.
+                $k_notiz)) {
+                
+                header("Location: ./component.php");
             } else {
-                header('Location: ./err.php?err=Fehler beim einfügen eines Raumes');
+                 header("Location: ./err.php?err=Fehler beim erstellen der Komponente.");
             }
             exit();
         }
     }
 }
 
-function insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer, $k_hersteller, $k_notiz){
-   
+function insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer, $k_hersteller, $lieferant_l_id, $k_notiz) {
     global $mysqli;
-    if ($insert_stmt = $mysqli->prepare("INSERT INTO `komponenten` (`komponentenarten_ka_id`, `raeume_r_id`,`k_einkaufsdatum`,`k_gewaehrleistungsdauer`,`k_hersteller`,`k_notiz`,`lieferant_l_id`) VALUES ( ?, ?, ?, ?, ?, ?, ?)")) {
-        $insert_stmt->bind_param('ssssss', $komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum,$k_gewaehrleistungsdauer,$k_hersteller,$k_notiz);
+    if($insert_stmt = $mysqli->prepare(
+        "INSERT INTO `komponenten` (
+            `komponentenarten_ka_id`,
+            `raeume_r_id`,
+            `k_einkaufsdatum`,
+            `k_gewaehrleistungsdauer`,
+            `k_hersteller`,
+            `lieferant_l_id`,
+            `k_notiz`)
+        VALUES (
+            $komponentenart_ka_id,
+            $raeume_r_id,
+            '$k_einkaufsdatum',
+            $k_gewaehrleistungsdauer,
+            '$k_hersteller',
+            $lieferant_l_id,
+            '$k_notiz'
+        )")) {
+
         // Execute the prepared query.
         if (!$insert_stmt->execute()) {
             return -1;
