@@ -1,10 +1,17 @@
 <?php
 include './php/classes/db_connect.php';
 include './php/dbq/rooms_query.php';
+include './php/dbq/attribute_query.php';
 echo '<br/> <b>Räume:</b> <br/>';
+
 $rooms = getRooms();
 foreach ($rooms as $room) {
     echo ' raum ' . $room["Id"] . $room["Number"]  . $room["Description"] . $room["Note"].'<br/>';
+}
+
+$attribute = getAttributes();
+foreach ($attribute as $item) {
+    echo ' kat_id ' . $item["kat_id"] . $item["kat_bezeichnung"] . '<br/>';
 }
 ?>
 <html>
@@ -38,6 +45,23 @@ foreach ($rooms as $room) {
                     } while ($id != NULL)
                 ?>
             </table>-->
+        </div>
+    </body>
+</html>
+ 
+<html>
+    <head>
+        <title>Error</title>
+    </head>
+    <body>
+        <div class="container">
+            <form method="post" action="php/dbq/attribute_query.php">
+                <input type="text" name="kat_id" placeholder="">
+                <input type="text" name="kat_bezeichnung" placeholder="">
+                <button name="btnInsert" type="submit" class="btn btn-primary">I</button>
+                <button name="btnUpdate" type="submit" class="btn btn-primary">U</button>
+                <button name="btnRemove" type="submit" class="btn btn-primary">D</button>
+            </form>
         </div>
     </body>
 </html>
