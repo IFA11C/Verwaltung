@@ -11,8 +11,8 @@ final class User {
      */
     public static function Login() {
         if(isset($_POST["username"]) && isset($_POST["password"])) {
-            $localUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);;
-            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);;
+            $localUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
             $user = getUser($localUsername);
             if(isset($user)) {
