@@ -1,5 +1,7 @@
 <?php
     include '../php/classes/db_connect.php';
+    include('../php/classes/user.php');
+    User::requiresRole("lehrer");
 ?>
 
 <!DOCTYPE html>

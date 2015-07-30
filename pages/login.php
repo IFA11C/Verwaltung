@@ -1,10 +1,28 @@
 <?php
-    include '../php/classes/db_connect.php';
-    include '../php/classes/user.php';
+    include('../php/classes/user.php');
     
-    if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
+    if($_SERVER['REQUEST_METHOD'] == "POST") {
         User::Login();
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == "GET") {
+        if(isset($_GET["code"])) {
+            $code = $_GET["code"];
+            switch($code) {
+                case 403:
+                    $message = "Sie haben nicht die nötigen Rechte um diese Aktion durchzuführen. Bitte melden Sie sich mit einem Nutzer an der die Entsprechenden Rechte hat.";
+                    break;
+                case 1337:
+                    $message = "Fehler beim Anmelden. Bitte stellen Sie sicher das Ihr Benutzername und Passwort korrekt sind.";
+                    break;
+                case 41:
+                    $message = "Erfolgreich abgemeldet.";
+                    break;
+            }
+        }
+        else if(User::getRole() != '') {
+            header("Location: ./index.php");
+        }
     }
 ?>
 
@@ -21,7 +39,18 @@
                     <!-- main right col -->
                     <div class="column col-sm-12 col-xs-12" id="main">
                         <div class="container">
-                            <div class="col col-sm-4 col-sm-offset-4">
+                            <?php
+                                if(isset($message))
+                                {
+                                    echo("
+                                        <div class='center alert alert-danger' role='alert'>
+                                            $message
+                                        </div>
+                                    ");    
+                                }
+                                
+                            ?>
+                            <div class="center col col-sm-4 col-sm-offset-4">
                                 <h2 class="page-header">Login</h2>
                             </div>
                             <div class="col col-sm-4 col-sm-offset-4">

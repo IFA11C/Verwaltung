@@ -12,6 +12,14 @@ define("USER", "ultralord");          	    	 // The database username.
 define("PASSWORD", "1234");                      // The database password. 
 define("DATABASE", "itv_v02");                   // The database name.
 
+/*
+define("HOST", "localhost"); 			// The host you want to connect to. 
+define("USER", "root"); 		// The database username. 
+define("PASSWORD", "");                      // The database password. 
+define("DATABASE", "itv_v02");                   // The database name.
+*/
+
+//
 //Verbindung aufbauen
 $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 

@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -7,9 +6,8 @@
 /**
  * Einbindung Globaler Konfigurationen
  */
-include_once '/../classes/db_connect.php';
-include_once '/../classes/sec_session.php';
-sec_session_start();
+include_once('../php/classes/db_connect.php');
+
 $error_msg = "";
 
 if (isset($_POST['btnInsert'])) {
