@@ -2,10 +2,10 @@
 -- version 4.4.12
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 30, 2015 at 09:45 AM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Host: localhost
+-- Generation Time: Jul 30, 2015 at 12:07 PM
+-- Server version: 5.6.26-log
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -161,7 +161,7 @@ INSERT INTO `komponentenarten` (`ka_id`, `ka_komponentenart`) VALUES
 CREATE TABLE IF NOT EXISTS `komponentenattribute` (
   `kat_id` int(11) NOT NULL,
   `kat_bezeichnung` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komponentenattribute`
@@ -332,6 +332,11 @@ ALTER TABLE `benutzer`
 ALTER TABLE `benutzer_rollen`
   MODIFY `rollen_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `komponentenattribute`
+--
+ALTER TABLE `komponentenattribute`
+  MODIFY `kat_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `lieferant`
 --
 ALTER TABLE `lieferant`
@@ -363,7 +368,7 @@ ALTER TABLE `hardware_in_raum`
 --
 ALTER TABLE `komponente_hat_attribute`
   ADD CONSTRAINT `fk_komponenten_has_komponentenattribute_komponenten1` FOREIGN KEY (`komponenten_k_id`) REFERENCES `komponenten` (`k_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_komponenten_has_komponentenattribute_komponentenattribute1` FOREIGN KEY (`komponentenattribute_kat_id`) REFERENCES `komponentenattribute` (`kat_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_komponenten_has_komponentenattribute_komponentenattribute1` FOREIGN KEY (`komponentenattribute_kat_id`) REFERENCES `komponentenattribute` (`kat_id`);
 
 --
 -- Constraints for table `komponenten`
@@ -378,7 +383,7 @@ ALTER TABLE `komponenten`
 --
 ALTER TABLE `wird_beschrieben_durch`
   ADD CONSTRAINT `fk_komponentenarten_has_komponentenattribute_komponentenarten1` FOREIGN KEY (`komponentenarten_ka_id`) REFERENCES `komponentenarten` (`ka_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_komponentenarten_has_komponentenattribute_komponentenattri1` FOREIGN KEY (`komponentenattribute_kat_id`) REFERENCES `komponentenattribute` (`kat_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_komponentenarten_has_komponentenattribute_komponentenattri1` FOREIGN KEY (`komponentenattribute_kat_id`) REFERENCES `komponentenattribute` (`kat_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
