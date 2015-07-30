@@ -24,7 +24,6 @@
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Name</th>
                                         <th>&nbsp;</th>
                                     </tr>
@@ -37,7 +36,7 @@
                                             $name = $property["kat_bezeichnung"];
                                             echo('
                                                 <tr>
-                                                    <td class="clickable">'.$id.'</td>
+                                                    <td class="hidden">'.$id.'</td>
                                                     <td class="clickable">'.$name.'</td>
                                                     <td class="delete-column">
                                                         <button name="btnRemove" class="delete-button pull-right"><span class="glyphicon glyphicon-remove-sign"></span>
