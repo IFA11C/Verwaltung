@@ -68,7 +68,7 @@ if (isset($_POST['btnRemove'])) {
 }
 
 /**
- * Diese Funktion gibt alle Räume zurück 
+ * Diese Funktion gibt alle Räume zurück.
  */
 function getRooms() {
     global $mysqli;
@@ -88,7 +88,7 @@ function getRooms() {
 }
 
 /*
- * Diese Funktion Fügt einen neuen Raum der Datenbank hinzu.
+ * Diese Funktion fügt einen neuen Raum der Datenbank hinzu.
  */
 function insertRooms($number, $name, $note) {
     global $mysqli;
