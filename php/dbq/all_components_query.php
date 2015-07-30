@@ -39,13 +39,50 @@ function getAllComponents() {
     
     while ($stmt->fetch()) {
         $allComponents[] = array(
-            "Id" => $id, 
-            "Type" => $type,
-            "Room" => $room,
-            "PDate" => $pDate, 
-            "Warranty" => $warranty, 
-            "Manufacturer" => $manufacturer, 
-            "Note" => $note);
+            "k_id" => $id, 
+            "komponentenart_ka_id" => $type,
+            "raeume_r_id" => $room,
+            "k_einkaufsdatum" => $pDate, 
+            "k_gewaehrleistungsdauer" => $warranty, 
+            "k_hersteller" => $manufacturer, 
+            "k_notiz" => $note);
     }
     return $allComponents; 
+}
+
+if (isset($_POST['btnInsert'])) {
+    if (isset($_POST['komponentenart_ka_id'], $_POST['raeume_r_id'], $_POST['k_einkaufsdatum'], $_POST['k_gewaehrleistungsdauer'], $_POST['k_hersteller'], $_POST['k_notiz'])) {
+        $komponentenart_ka_id = filter_input(INPUT_POST, 'komponentenart_ka_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $raeume_r_id  = filter_input(INPUT_POST, 'raeume_r_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $k_einkaufsdatum = filter_input(INPUT_POST, 'k_einkaufsdatum', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $k_gewaehrleistungsdauer = filter_input(INPUT_POST, 'k_gewaehrleistungsdauer', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $k_hersteller = filter_input(INPUT_POST, 'k_hersteller', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $k_notiz = filter_input(INPUT_POST, 'k_notiz', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if (empty($error_msg)) {
+            if ($id = insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer,$k_hersteller,$k_notiz)) {
+                header('Location: ../component.php?ID=' . $id);
+            } else {
+                header('Location: ../err.php?err=Fehler beim einfügen eines Raumes');
+            }
+            exit();
+        }
+    }
+}
+
+function insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer, $k_hersteller, $k_notiz){
+   
+    global $mysqli;
+    if ($insert_stmt = $mysqli->prepare("INSERT INTO `komponenten` (`komponentenarten_ka_id`, `raeume_r_id`,`k_einkaufsdatum`,`k_gewaehrleistungsdauer`,`k_hersteller`,`k_notiz`,`lieferant_l_id`) VALUES ( 1, 1, 2014-10-10, 1, 1, 1,1)  ")) {
+        //  $insert_stmt->bind_param('ssssss', $komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum,$k_gewaehrleistungsdauer,$k_hersteller,$k_notiz);
+        // Execute the prepared query.
+        if (!$insert_stmt->execute()) {
+            return -1;
+            exit();
+        }
+    }
+    return $mysqli->insert_id;
+
+    exit();
+
+    
 }
