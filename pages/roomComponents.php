@@ -1,12 +1,24 @@
 <?php
-    include '../php/classes/db_connect.php';
+    include '../php/dbq/rooms_query.php';
+    
+    $roomID = filter_input(INPUT_GET, 'Id');
+    $rooms = getRooms();
+    
+    foreach ($rooms as $room) {
+        if ($room['Id'] == $roomID) {
+            //Raum, der in der url übergeben wird, ist selektiert
+            $roomName = $room['Number'];
+            $roomDescription = $room['Description'];
+            $roomNote = $room['Note'];
+        }
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <?php include('../fragments/default_includes.php'); ?>
-        <title>IT-Verwaltung</title>
+        <title>IT-Verwaltung - Raum bearbeiten</title>
     </head>
     <body>
         <div class="wrapper">
@@ -19,11 +31,21 @@
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
-                            <h1 class="page-header" id="roomNumber">101.145<a class="btn btn-info pull-right" onclick="EditRoom()">Raum bearbeiten</a></h1>
+                            <h1 class="page-header" id="roomNumber"><?php echo $roomName ?>
+                                <a class="btn btn-info pull-right" onclick="EditRoom()">Raum bearbeiten</a></h1>
 
                             <div class="hardware-info">
-                                <h4 id="roomDescription">Beschreibung</h4>
-                                <h4 id="roomNote">Notiz</h4>
+                                <?php
+                                    if (isset($roomDescription))
+                                    {
+                                        echo "<h4 id='roomDescription'>Bezeichnung: $roomDescription</h4>";
+                                    }
+                                
+                                    if (isset($roomNote))
+                                    {
+                                        echo "<h4 id='roomNote'>Notziz: $roomNote</h4>";
+                                    }
+                                ?>
                             </div>
 
                             <h3 class="page-header">Komponenten</h3>
