@@ -1,7 +1,6 @@
 <?php
-    include '../php/classes/db_connect.php';
+    include '../php/dbq/all_components_query.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
     <head>
@@ -26,52 +25,37 @@
                             <table id="" class="table table-responsive">
                               <thead>
                                   <tr>
-                                      <th>#</th>
-                                      <th>Name</th>
+                                      <th>Type</th>
                                       <th>Raum</th>
-                                      <th>Lieferant</th>
                                       <th>Einkaufsdatum</th>
                                       <th>Garantie in Jahren</th>
+                                      <th>Lieferant</th>
                                       <th>Beschreibung</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>1</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
-                                  <tr>
-                                      <td>2</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
-                                  <tr>
-                                      <td>3</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
-                                  <tr>
-                                      <td>4</td>
-                                      <td>PC 004</td>
-                                      <td>102.110</td>
-                                      <td>Amazon</td>
-                                      <td>20.05.15</td>
-                                      <td>2</td>
-                                      <td>PC für Sekretärin</td>
-                                  </tr>
+                                <?php
+                                    $components = getAllComponents();
+
+                                    foreach ($components as $component) {
+                                        echo "<tr class='component'>"
+                                        . "<td class='hidden'>"
+                                        .$component['Id']
+                                        ."</td><td>"
+                                        .$component['Type']
+                                        ."</td><td>"
+                                        .$component["Room"]
+                                        ."</td><td>"
+                                        .$component["PDate"]
+                                        ."</td><td>"
+                                        .$component["Warranty"]
+                                        ."</td><td>"
+                                        .$component["Manufacturer"]
+                                        ."</td><td>"
+                                        .$component["Note"]
+                                        ."</td></tr>";
+                                    }
+                                ?>
                               </tbody>
                             </table>
                             <form class="pull-right">
@@ -97,20 +81,24 @@
                             <input placeholder="Name" id="txtName" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Raum" id="txtRoom" class="form-control" type="text"/>
+                            <label class="control-label" for="txtType">Typ</label>
+                            <input placeholder="Raum" id="txtType" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="txtSupplier">Lieferant</label>
-                            <input placeholder="Lieferant" id="txtSupplier" class="form-control" type="text"/>
+                            <label class="control-label" for="txtRoom">Raum</label>
+                            <input placeholder="Lieferant" id="txtRoom" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
                             <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
-                            <input placeholder="Garantie" id="txtWarrantyInYears" class="form-control" type="text"/>
+                            <label class="control-label" for="txtWarranty">Garantie in Jahren</label>
+                            <input placeholder="Garantie" id="txtWarranty" class="form-control" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="txtManufacturer">Lieferant</label>
+                            <input placeholder="Garantie" id="txtManufacturer" class="form-control" type="text"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="txtDescription">Beschreibung</label>
@@ -144,7 +132,8 @@
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-                    var ziel = "./componentItems.php";
+                    id = $(this).find(".hidden").text();
+                    var ziel = "./componentItems.php?Id=" + id;
                     window.location.href=ziel;
                 });
             });
