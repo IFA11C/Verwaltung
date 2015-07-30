@@ -6,7 +6,7 @@
 /**
  * Einbindung Globaler Konfigurationen
  */
-include_once('/../classes/db_connect.php');
+include_once('../php/classes/db_connect.php');
 
 $error_msg = "";
 
@@ -15,11 +15,12 @@ if (isset($_POST['btnInsert'])) {
         $number = filter_input(INPUT_POST, 'nbr', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        
         if (empty($error_msg)) {
             if ($id = insertRooms($number, $name, $note)) {
-                header('Location: ../roomComponents.php?ID=' . $id);
+                header('Location: ./roomComponents.php');
             } else {
-                header('Location: ../err.php?err=Fehler beim einfügen eines Raumes');
+                header('Location: ./err.php?err=Fehler beim einfügen eines Raumes');
             }
             exit();
         }
@@ -32,10 +33,10 @@ if (isset($_POST['btnUpdate'])) {
         $number = filter_input(INPUT_POST, 'nbr', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        echo $id.$number;
+        
         if (empty($error_msg)) {
             if (updateRoom($id, $number, $name, $note)) {
-                header('Location: ../room.php?ID=' . $id);
+                header('Location: ./rooms.php');
             } else {
            //     header('Location: ../../err.php?err=Fehler beim einfügen eines Raumes');
             }
@@ -49,9 +50,9 @@ if (isset($_POST['btnRemove'])) {
         $id = filter_input(INPUT_POST, 'nid', FILTER_SANITIZE_NUMBER_INT);
         if (empty($error_msg)) {
             if (removeRoom($id)) {
-                
+                header('Location: ./rooms.php');
             } else {
-                header('Location: ../err.php?err=Fehler beim einfügen eines Raumes');
+                header('Location: ./err.php?err=Fehler beim einfügen eines Raumes');
             }
 
             exit();
