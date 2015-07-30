@@ -83,6 +83,43 @@ tbody td:hover
     background: transparent;
 }
 
+#ui-datepicker-div {
+    z-index: 99999 !important;
+}
+
+.ui-widget-header {
+    border: 1px solid #529B8B;
+    background: #529B8B; 
+}
+
+.ui-datepicker-month {
+    font-weight: normal;
+    color: black;
+}
+
+.ui-datepicker-year {
+    font-weight: normal;
+    color: black;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    border: 1px solid #529B8B;
+    background: #529B8B;
+    color: white;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #529B8B;
+    background: white;
+    color: #529B8B;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    border: 1px solid #529B8B;
+    background: #529B8B;
+    color: lightgrey;
+}
+
 .column {
     overflow: auto;
     *zoom: 1;

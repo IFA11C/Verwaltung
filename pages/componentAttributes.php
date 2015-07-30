@@ -6,6 +6,7 @@
 <html lang="de">
     <head>
         <?php include('../fragments/default_includes.php'); ?>
+        <script src="../js/jsform.js"></script>
         <title>IT-Verwaltung</title>
     </head>
     <body>
@@ -20,7 +21,7 @@
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
                             <h1 class="page-header">Komponenten Eigenschaften</h1>
-                            <table class="table table-bordered table-responsive">
+                            <table class="table table-responsive">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -140,23 +141,6 @@
                 
                 document.body.appendChild(form);
                 form.submit();
-            }
-            
-            function addHiddenButton(name) {
-                var button = document.createElement("button");
-                button.setAttribute("type", "hidden");
-                button.setAttribute("name", name);
-                button.click();
-                return button;
-            }
-            
-            function addHiddenField(name, value) {
-                var field = document.createElement("input");
-                field.setAttribute("type", "hidden");
-                field.setAttribute("name", name);
-                field.setAttribute("value", value);
-                
-                return field;
             }
         </script>
     </body>

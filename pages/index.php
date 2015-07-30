@@ -22,9 +22,10 @@
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
                             <div>
-                                <h2>IT-Verwaltung</h2>
+                                <h1 class="page-header">IT-Verwaltung</h1>
                                 <p>Willkommen zum IT-Verwaltungssystem!</p>
                             </div>
+                            <br/>
                             <div>
                                 <h3>Letzte Aktivitäten</h3>
                                 <table class="table table-responsive">

@@ -1,5 +1,7 @@
 <?php
     include '../php/dbq/all_components_query.php';
+    include '../php/dbq/rooms_query.php';
+    include '../php/dbq/componentType_query.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@
                                       <th>Raum</th>
                                       <th>Einkaufsdatum</th>
                                       <th>Garantie in Jahren</th>
-                                      <th>Lieferant</th>
+                                      <th>Hersteller</th>
                                       <th>Beschreibung</th>
                                   </tr>
                               </thead>
@@ -41,19 +43,19 @@
                                     foreach ($components as $component) {
                                         echo "<tr class='component'>"
                                         . "<td class='hidden'>"
-                                        .$component['Id']
+                                        .$component['k_id']
                                         ."</td><td>"
-                                        .$component['Type']
+                                        .$component['komponentenart_ka_id']
                                         ."</td><td>"
-                                        .$component["Room"]
+                                        .$component["raeume_r_id"]
                                         ."</td><td>"
-                                        .$component["PDate"]
+                                        .$component["k_einkaufsdatum"]
                                         ."</td><td>"
-                                        .$component["Warranty"]
+                                        .$component["k_gewaehrleistungsdauer"]
                                         ."</td><td>"
-                                        .$component["Manufacturer"]
+                                        .$component["k_hersteller"]
                                         ."</td><td>"
-                                        .$component["Note"]
+                                        .$component["k_notiz"]
                                         ."</td></tr>";
                                     }
                                 ?>
@@ -73,71 +75,100 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalLabel"></h4>
+                        <h4 class="modal-title">Komponente hinzufügen</h4>
                     </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-group">
-                            <label class="control-label" for="txtName">Name</label>
-                            <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label">Type</label>
+                                <select name="komponentenart_ka_id" class='form-control'>
+                                <?php
+                                    $types = getComponentTypes();
+                                    foreach($types as $type) {
+                                        $typeId = $type["Id"];
+                                        $componentType = $type["ComponentType"];
+                                        echo("<option value='$typeId'>$componentType</option>");
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Raum</label>
+                                <select name="raeume_r_id" class='form-control'>
+                                <?php 
+                                    $rooms = getRooms();
+                                    foreach($rooms as $room) {
+                                        $roomId = $room["Id"];
+                                        $roomNumber = $room["Number"];
+                                        $roomName = $room["Description"];
+                                        echo("<option value='$roomId'>$roomNumber - $roomName</option>");
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Einkaufsdatum</label>
+                                <div class="input-group">
+                                    <input id="datepicker" placeholder="Einkaufsdatum" class="form-control" type="text" name="k_einkaufsdatum"/>
+                                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Garantie in Jahren</label>
+                                <input placeholder="Garantie" class="form-control" type="number" name="k_gewaehrleistungsdauer"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Hersteller</label>
+                                <input placeholder="Hersteller" class="form-control" type="text" name="k_hersteller"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Beschreibung</label>
+                                <input placeholder="Beschreibung" class="form-control" type="text" name="k_notiz"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtType">Typ</label>
-                            <input placeholder="Raum" id="txtType" class="form-control" type="text"/>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Abbrechen</button>
+                            <button type="submit" class="btn btn-success" name="btnInsert">Komponente hinzufügen</button>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Lieferant" id="txtRoom" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
-                            <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtWarranty">Garantie in Jahren</label>
-                            <input placeholder="Garantie" id="txtWarranty" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtManufacturer">Lieferant</label>
-                            <input placeholder="Garantie" id="txtManufacturer" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
-                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
-                    </div>
+                    </form>
                     </div>
                 </div>
             </div>
         
         <script>
-            function Add(){
-                $('#modalLabel').html("Komponente hinzufügen");
-                
-                //Change button text
-                $('#modalBtn1').html("Abbrechen");
-                $('#modalBtn2').html("Komponente hinzufügen");
-                
-                //Clear values
-                $('#modal-edit').find('input').each( function () {
-                    $(this).val('');
-                });
-                
-                $('#modal-edit').modal('show');
-            };
-            
-            $(document).ready(function(){
-                $('table tr').on('click', function(){
+            $(document).ready(function() {
+                /*
+                 * Wenn auf einen Eintrag in der Tabelle geklickt wird,
+                 * wird die Detail-Seite angezeigt.
+                 */
+                $('table tr').on('click', function() {
                     id = $(this).find(".hidden").text();
                     var ziel = "./componentItems.php?Id=" + id;
                     window.location.href=ziel;
                 });
+                
+                /*
+                 * Erstellt einen auf deutsch Localisierten DatePicker
+                 * für das Einkaufsdatum an.
+                 */
+                $("#datepicker").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'yy-mm-dd',
+                    monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+                    dayNames: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+                    dayNamesShort: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+                    dayNamesMin: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+                });
             });
+            
+            /*
+             * Zeigt das Hinzufügen Modal an wenn der "Neu" Button geklickt wird.
+             */
+            function Add() {                
+                $('#modal-edit').modal('show');
+            };
         </script>
     </body>
 </html>
