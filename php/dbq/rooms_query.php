@@ -6,7 +6,7 @@
 /**
  * Einbindung Globaler Konfigurationen
  */
-include_once('../php/classes/db_connect.php');
+include_once('/../classes/db_connect.php');
 
 $error_msg = "";
 

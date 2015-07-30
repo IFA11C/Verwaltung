@@ -14,7 +14,7 @@ include_once '/../classes/db_connect.php';
  */
 function getHardwareAttribute($hardwareID) {
     global $mysqli;
-    if (!$stmt = $mysqli->prepare("SELECT k.k_id, ka.ka_komponentenart, r.r_nr, k.k_einkaufsdatum, k.k_gewaehrleistungsdauer, k.k_hersteller, k.k_notiz, kha.komponentenattribute_kat_id, kat.kat_bezeichnung, kha.khkat_wert FROM komponenten k inner join komponentenarten ka on k.komponentenarten_ka_id = ka.ka_id left join raeume r on r.r_id = k.raeume_r_id right join komponente_hat_attribute kha on k.k_id = kha.komponenten_k_id left join komponentenattribute kat on kha.komponenten_k_id = kat.kat_id where k.k_id = ' $hardwareID ' ")) {
+    if (!$stmt = $mysqli->prepare("SELECT k.k_id, ka.ka_komponentenart, r.r_nr, k.k_einkaufsdatum, k.k_gewaehrleistungsdauer, k.k_hersteller, k.k_notiz, kha.komponentenattribute_kat_id, kat.kat_bezeichnung, kha.khkat_wert FROM komponenten k inner join komponentenarten ka on k.komponentenarten_ka_id = ka.ka_id left join raeume r on r.r_id = k.raeume_r_id left join komponente_hat_attribute kha on k.k_id = kha.komponenten_k_id left join komponentenattribute kat on kha.komponenten_k_id = kat.kat_id where k.k_id = '$hardwareID'")) {
         // Could not create a prepared statement
         header("Location: ./err.php?err=Database error: "
                 . "cannot prepare statement");

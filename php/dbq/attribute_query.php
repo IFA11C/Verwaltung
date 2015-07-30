@@ -8,7 +8,7 @@
  * Einbindung Globaler Konfigurationen
  */
 //include_once 'php/classes/db_connect.php';
-include_once '/../classes/db_connect.php';
+include_once '../php/classes/db_connect.php';
 
 $error_msg = "";
 
@@ -21,9 +21,9 @@ if (isset($_POST['btnInsert'])) {
         $kat_bezeichnung = filter_input(INPUT_POST, 'kat_bezeichnung', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if (empty($error_msg)) {
             if ($id = insertAttribute($kat_bezeichnung)) {
-                header('Location: ../componentsAttributes.php?ID=' . $id);
+                header('Location: ./componentAttributes.php');
             } else {
-                header('Location: ../err.php?err=Fehler beim einfügen eines Attributs');
+                header('Location: ./err.php?err=Fehler beim einfügen eines Attributs');
             }
             exit();
         }
@@ -33,7 +33,6 @@ if (isset($_POST['btnInsert'])) {
 /**
  * Prüft ob Update Button gedrückt wurde
  */
-
 if (isset($_POST['btnUpdate'])) {
     if (isset($_POST['kat_id'], $_POST['kat_bezeichnung'])) {
         $id = filter_input(INPUT_POST, 'kat_id', FILTER_SANITIZE_NUMBER_INT);
@@ -41,9 +40,9 @@ if (isset($_POST['btnUpdate'])) {
         echo $id.$desc;
         if (empty($error_msg)) {
             if (updateAttribute($id, $desc)) {
-                header('Location: ../componentsAttributes.php?ID=' . $id);
+                header('Location: ./componentAttributes.php');
             } else {
-           //     header('Location: ../../err.php?err=Fehler beim einfügen eines Raumes');
+                header('Location: ./err.php?err=Fehler beim einfügen eines Raumes');
             }
             exit();
         }
@@ -59,9 +58,9 @@ if (isset($_POST['btnRemove'])) {
         $id = filter_input(INPUT_POST, 'kat_id', FILTER_SANITIZE_NUMBER_INT);
         if (empty($error_msg)) {
             if (removeAttribute($id)) {
-                
+                header('Location: ./componentAttributes.php');
             } else {
-                header('Location: ../err.php?err=Fehler beim löschen eines Attributs');
+                header('Location: ./err.php?err=Fehler beim löschen eines Attributs');
             }
 
             exit();
