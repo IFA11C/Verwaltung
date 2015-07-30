@@ -93,8 +93,7 @@
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
-                    
-                    var ziel1 = "./roomComponents.php";
+                    var ziel = "./roomComponents.php";
                     window.location.href=ziel;
                 });
             });
