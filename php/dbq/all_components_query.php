@@ -75,6 +75,9 @@ function getAllComponents() {
     return $allComponents; 
 }
 
+/*
+ * Diese Funktion fügt eine neue Komponente zur Datenbank hinzu.
+ */
 function insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer, $k_hersteller, $lieferant_l_id, $k_notiz) {
     global $mysqli;
     if($insert_stmt = $mysqli->prepare(
