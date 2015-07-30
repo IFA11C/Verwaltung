@@ -1,7 +1,8 @@
 <?php
     $homeUrl = "../pages/index.php";
     $hardwareUrl = "../pages/component.php";
-    $propertiesUrl = "../pages/componentsAttributes.php";
+    $propertiesUrl = "../pages/hardwarePropertys.php";
+    $softwareUrl = "../pages/software.php";
     $roomsUrl = "../pages/rooms.php";
 ?>
 <!-- Naviagtion -->
@@ -16,6 +17,9 @@
         </li>
         <li>
             <a href="<?php echo($propertiesUrl); ?>"><span class="glyphicon glyphicon-tag"></span>&nbsp;&nbsp;Eigenschaften</a>
+        </li>
+        <li>
+            <a href="<?php echo($softwareUrl); ?>"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;Software</a>
         </li>
         <li>
             <a href="<?php echo($roomsUrl); ?>"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;Räume</a>
@@ -38,6 +42,11 @@
         <li>
             <a href="<?php echo($propertiesUrl); ?>" class="text-center">
                 <span class="glyphicon glyphicon-tag"></span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo($softwareUrl); ?>" class="text-center">
+                <span class="glyphicon glyphicon-th-large"></span>
             </a>
         </li>
         <li>

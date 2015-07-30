@@ -228,3 +228,7 @@ h1, h2, h3 {
     background-color: #589B9B;
     border: #529B8B 1px solid;
 }
+
+.login-vertical-center{
+    vertical-align: central;
+}

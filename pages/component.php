@@ -144,21 +144,9 @@
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
+                    alert("TODO componentItems aufrufen");
                     
-                    //Change button text
-                    $('#modalBtn1').html("Änderungen verwerfen");
-                    $('#modalBtn2').html("Änderungen speichern");
-                    
-                    //Change content from imput fields
-                    $('#modalLabel').html($(this).children().eq(1).text());
-                    $('#txtName').val($(this).children().eq(1).text());
-                    $('#txtRoom').val($(this).children().eq(2).text());
-                    $('#txtSupplier').val($(this).children().eq(3).text());
-                    $('#txtPurchaseDate').val($(this).children().eq(4).text());
-                    $('#txtWarrantyInYears').val($(this).children().eq(5).text());
-                    $('#txtDescription').val($(this).children().eq(6).text());
-                    
-                    $('#modal-edit').modal('show');
+                    //TODO: Open right ComponentItems
                 });
             });
         </script>

@@ -21,8 +21,8 @@
                     <!-- main right col -->
                     <div class="column col-sm-12 col-xs-12" id="main">
                         <div class="container">
-                            <div class="center col col-sm-4 col-sm-offset-4">
-                                <h2>Login</h2>
+                            <div class="col col-sm-4 col-sm-offset-4">
+                                <h2 class="page-header">Login</h2>
                             </div>
                             <div class="col col-sm-4 col-sm-offset-4">
                                 <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
@@ -40,5 +40,10 @@
                 </div>
             </div>
         </div>
+        <nav class="nav navbar-fixed-bottom">
+            <div class="pull-right hidden-xs">
+                <img src="../images/Logo.png"/>
+            </div>
+        </nav>
     </body>
 </html>

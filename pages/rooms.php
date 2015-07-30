@@ -51,7 +51,7 @@
                                 </tbody>
                             </table>
                             <form class="pull-right">
-                                <button class="btn btn-info" type="button" onclick="Add()">Neu</button>
+                                <button class="btn btn-info" type="button" onclick="AddRoom()">Neu</button>
                             </form>
                         </div>
                     </div>
@@ -59,12 +59,12 @@
             </div>
         </div>
         
-        <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog">
+        <div class="modal fade" id="modal-room-add" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="modalLabel"></h4>
+                        <h4 class="modal-title">Raum hinzufügen</h4>
                     </div>
                     <div class="modal-body">
                         
@@ -83,69 +83,32 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <button id="modalBtn1" type="button" class="btn btn-warning" data-dismiss="modal"></button>
-                        <button id="modalBtn2" type="button" class="btn btn-success" data-dismiss="modal"></button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Abbrechen</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Raum hinzufügen</button>
                     </div>
                     </div>
                 </div>
             </div>
         
         <script>
-            function Add(){
-                $('#modalLabel').html("Raum hinzufügen");
-                
-                //Change button text
-                $('#modalBtn1').html("Abbrechen");
-                $('#modalBtn2').html("Raum hinzufügen");
-                
-                //Clear values
-                $('#modal-edit').find('input').each( function () {
-                    $(this).val('');
-                });
-                
-                $('#modal-edit').modal('show');
+            function AddRoom(){
+                $('#modal-room-add').modal('show');
             };
             
             $(document).ready(function(){
                 $('table tr').on('click', function(){
                     
-                    //Change button text
-                    $('#modalBtn1').html("Änderungen verwerfen");
-                    $('#modalBtn2').html("Änderungen speichern");
-                    
-                    //Change content from imput fields
-                    $('#modalLabel').html($(this).children().eq(1).text());
-                    $('#txtRoomNumber').val($(this).children().eq(1).text());
-                    $('#txtDescription').val($(this).children().eq(2).text());
-                    $('#txtNote').val($(this).children().eq(3).text());
-                    
-                    $('#modal-edit').modal('show');
+                    //TODO
+                    alert("roomComponents aufrufen");
                 });
             });
             
 //            $(document).ready(function() {
-//                $('#modalBtn2').on( "click", function() {
-//                    alert("hallo1");
-//                    $.ajax({
-//                        url: '../php/classes/room.php',
-//                        type: 'post',
-//                        data: { "call_InsertRoom": "1", 
-//                            "post_roomID": $('#txtRoomNumber').val($(this).children().eq(1).text()),
-//                            "post_description": $('#txtDescription').val($(this).children().eq(2).text()),  
-//                            "post_note": $('#txtNote').val($(this).children().eq(3).text())},
-//                        success: function(response) { console.log(response); } 
-//                    });
-//
-//                    alert('Hallo');
+//                $(".raum").on( "click", function() {
+//                    var id = $(this).find(".hidden").text();
+//                    console.log("Id: " + id);
 //                });
 //            });
-
-            $(document).ready(function() {
-                $(".raum").on( "click", function() {
-                    var id = $(this).find(".hidden").text();
-                    console.log("Id: " + id);
-                });
-            });
         </script>
     </body>
 </html>
