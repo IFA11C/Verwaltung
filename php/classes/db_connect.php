@@ -7,16 +7,18 @@
  * Setzen des Charsets UTF-8
  */
 
-define("HOST", "192.168.10.1"); 		 // The host you want to connect to. 
-define("USER", "ultralord");          	    	 // The database username. 
-define("PASSWORD", "1234");                      // The database password. 
-define("DATABASE", "itv_v02");                   // The database name.
+//Team-Server
+define("HOST", "192.168.10.1");
+define("USER", "ultralord");
+define("PASSWORD", "1234");
+define("DATABASE", "itv_v02");
 
 /*
-define("HOST", "localhost"); 			// The host you want to connect to. 
-define("USER", "root"); 		// The database username. 
-define("PASSWORD", "");                      // The database password. 
-define("DATABASE", "itv_v02");                   // The database name.
+//Localer Xampp Server
+define("HOST", "localhost");
+define("USER", "root");
+define("PASSWORD", "");
+define("DATABASE", "itv_v02");
 */
 
 //
