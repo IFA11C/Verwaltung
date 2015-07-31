@@ -16,7 +16,7 @@ if(isset($_POST['btnInsert'])) {
         
         if (empty($error_msg)) {
             if ($id = insertRooms($number, $name, $note)) {
-                header('Location: ../roomComponents.php?Id=' . $id);
+                header('Location: roomComponents.php?Id=' . $id);
             } else {
                 header('Location: ./err.php?err=Fehler beim erstellen des Raumes');
             }
@@ -39,7 +39,7 @@ if (isset($_POST['btnUpdate'])) {
         
         if (empty($error_msg)) {
             if (updateRoom($id, $number, $name, $note)) {
-                header('Location: ../roomComponents.php?Id=' . $id);
+                header('Location: roomComponents.php?Id=' . $id);
             } else {
                 header('Location: ./err.php?err=Fehler beim aktualiseren des Raumes');
             }
@@ -49,7 +49,7 @@ if (isset($_POST['btnUpdate'])) {
 }
 
 /*
- * Wenn der Löschen Knopf auf der Seite gedrückt wurde werden die
+ * Wenn der Löschen Knopf auf der Seite gedrückt wurde
  * wird der entsprechende Raum aus der Datenbank entfernt.
  */
 if (isset($_POST['btnRemove'])) {
@@ -65,6 +65,25 @@ if (isset($_POST['btnRemove'])) {
             exit();
         }
     }
+}
+
+function getRoom($id) {
+    global $mysqli;
+    if (!$stmt = $mysqli->prepare("SELECT distinct * FROM raeume where r_id = $id")) {
+        // Could not create a prepared statement
+        header("Location: ./err.php?err=Database error: cannot prepare statement");
+        exit();
+    }
+    
+    $stmt->execute();
+    $stmt->bind_result($id, $nr, $description, $note);
+    $room = array();
+    
+    while ($stmt->fetch()) {
+        $room = array("Id" => $id, "Number" => $nr, "Description" => $description, "Note" => $note);
+    }
+    
+    return $room;   
 }
 
 /**

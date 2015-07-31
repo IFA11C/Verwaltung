@@ -39,12 +39,12 @@ if (isset($_POST['btnInsert'])) {
 function getAllComponents() {
     global $mysqli;
     if (!$stmt = $mysqli->prepare(
-            "SELECT k.k_id, ka.ka_komponentenart, r.r_nr, k.k_einkaufsdatum, "
-            . "k.k_gewaehrleistungsdauer, k.k_hersteller, k.k_notiz "
-            . "FROM komponenten k "
-            . "inner join komponentenarten ka "
-            . "on k.komponentenarten_ka_id = ka.ka_id "
-            . "left join raeume r on r.r_id = k.raeume_r_id ")) {
+            "SELECT k.k_id, ka.ka_komponentenart, r.r_nr, k.k_einkaufsdatum, k.k_gewaehrleistungsdauer, k.k_hersteller, k.k_notiz
+                FROM komponenten k
+                inner join komponentenarten ka on k.komponentenarten_ka_id = ka.ka_id 
+                left join raeume r on r.r_id = k.raeume_r_id 
+                left join software_in_raum sir on sir.sir_k_id = k.k_id
+                where sir.sir_k_id is null")) {
         // Could not create a prepared statement
         header("Location: ./err.php?err=Database error: "
                 . "cannot prepare statement");
@@ -107,5 +107,41 @@ function insertComponent($komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, 
     }
     return $mysqli->insert_id;
 
+    exit();
+}
+
+function updateComponent($k_id, $komponentenart_ka_id, $raeume_r_id, $k_einkaufsdatum, $k_gewaehrleistungsdauer, $k_hersteller, $lieferant_l_id, $k_notiz) {
+    global $mysqli;
+    if ($insert_stmt = $mysqli->prepare(
+        "UPDATE komponenten SET 
+            komponentenarten_ka_id=$komponentenart_ka_id,
+            raeume_r_id = $raeume_r_id,
+            k_einkaufsdatum = '$k_einkaufsdatum',
+            k_gewaehrleistungsdauer = $k_gewaehrleistungsdauer,
+            k_hersteller =  '$k_hersteller',
+            lieferant_l_id = $lieferant_l_id,
+            k_notiz = '$k_notiz' 
+            WHERE k_id=$k_id")) {
+        if (!$insert_stmt->execute()) {
+            return false;
+            exit();
+        }
+    }
+    return true;
+
+    exit();
+}
+
+function removeComponent($id) {
+    global $mysqli;
+    if ($insert_stmt = $mysqli->prepare("DELETE FROM komponenten WHERE k_id = $id")) {
+        // Execute the prepared query.
+        if (!$insert_stmt->execute()) {
+            return false;
+            exit();
+        }
+    }
+    
+    return true;
     exit();
 }
