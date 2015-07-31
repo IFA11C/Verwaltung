@@ -1,6 +1,19 @@
 <?php
-include_once '../php/classes/db_connect.php';
-include_once 'all_components_query.php';
+/*
+ * Dieser PHP-Code enthält die Queries um Software
+ * hinzuzufügen, bearbeiten und löschen.
+ * 
+ * Software sind Komponenten die einen eintrag in
+ * der software_in_raum Tabelle haben. Deswegen
+ * werden die Komponenten Queries verwendet um die
+ * Komponenten in der Datenbank zu ändern.
+ */
+
+//Inkludieren der Datenbank verbindung und des mysqli Objekts.
+include_once('../php/classes/db_connect.php');
+//Inkludierung der Komponenten Queries
+//e.g. insertComponent, updateComponent, removeComponent
+include_once('all_components_query.php');
 
 /*
  * Wenn der Hinzufügen Knopf auf der Seite gedrückt wurde werden die Formular Felder
