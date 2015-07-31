@@ -28,10 +28,12 @@
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
                         <div class="container">
-                            <h1 class="page-header" id="componentName">
+                            <h1 class="page-header">
                                 <?php if(!empty($components))
                                     {
-                                        echo $component['Type'];    
+                                        echo '<span id="componentName">'
+                                        .$component['Type']
+                                        .'</span>';
                                     } 
                                 ?> 
                                 <a class="btn btn-info pull-right" onclick="EditComponent()">Bearbeiten</a>
@@ -44,22 +46,22 @@
                                             if(!empty($components)){
                                                 if (isset($component['Room']))
                                                 {
-                                                    echo "<h4 id='roomDescription'>Raumnummer: "
+                                                    echo "<h4>Raumnummer: <span id='room'>"
                                                     .$component['Room']
-                                                    ."</h4>";
+                                                    ."</span></h4>";
                                                 }
 
                                                 if (isset($component['PDate']))
                                                 {
-                                                    echo "<h4 id='purchaseDate'>Einkaufsdatum: "
+                                                    echo "<h4>Einkaufsdatum: <span id='purchaseDate'>"
                                                     .$component['PDate']
-                                                    ."</h4>";
+                                                    ."</span></h4>";
                                                 }
                                                 if (isset($component['Warranty']))
                                                 {
-                                                    echo "<h4 id='warranty'>Garantie in Jahren: "
+                                                    echo "<h4>Garantie in Jahren: <span id='warranty'>"
                                                     .$component['Warranty']
-                                                    ."</h4>";
+                                                    ."</span></h4>";
                                                 }
                                             }
                                         ?>
@@ -69,16 +71,16 @@
                                             if(!empty($components)){
                                                 if (isset($component['Manufacturer']))
                                                 {
-                                                    echo "<h4 id='manufacturer'>Lieferant: "
+                                                    echo "<h4>Lieferant: <span id='manufacturer'>"
                                                     .$component['Manufacturer']
-                                                    ."</h4>";
+                                                    ."</span></h4>";
                                                 }
 
                                                 if (isset($component['Note']))
                                                 {
-                                                    echo "<h4 id='note'>Beschreibung: "
+                                                    echo "<h4>Beschreibung: <span id='note'>"
                                                     .$component['Note']
-                                                    ."</h4>";
+                                                    ."</span></h4>";
                                                 }
                                             }
                                         ?>
@@ -229,12 +231,12 @@
             function EditComponent(){                
                 
                 //Change content from imput fields
-                $('#txtName').val($('#name').text());
+                $('#txtName').val($('#componentName').text());
                 $('#txtRoom').val($('#room').text());
-                $('#txtSupplier').val($('#supplier').text());
+                $('#txtSupplier').val($('#manufacturer').text());
                 $('#txtPurchaseDate').val($('#purchaseDate').text());
                 $('#txtWarranty').val($('#warranty').text());
-                $('#txtDescription').val($('#description').text());
+                $('#txtDescription').val($('#note').text());
                 
                 $('#modal-component-edit').modal('show');
             };
