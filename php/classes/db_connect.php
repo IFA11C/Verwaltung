@@ -1,35 +1,40 @@
 <?php
 /**
- * Das ist der PHP-Code, den wir benutzen um uns mit der MySQL-Datenbank
- * zu verbinden.
+ * Dieser PHP-Code, wir benutzen um sich mit der
+ * MySQL-Datenbank zu verbinden.
  * 
- * Inizalisieren des zentralen mysqli Objektes und verbinden mit der Datenbank
- * Setzen des Charsets UTF-8
+ * Initialisieren des zentralen mysqli Objektes,
+ * Verbinden mit der Datenbank und setzen des
+ * Encodings UTF-8.
  */
 
-define("HOST", "192.168.10.1"); 		 // The host you want to connect to. 
-define("USER", "ultralord");          	    	 // The database username. 
-define("PASSWORD", "1234");                      // The database password. 
-define("DATABASE", "itv_v02");                   // The database name.
+//Der Addresse des Computers wo der Datenbank Server läuft.
+define("HOST", "localhost"); 
+//Der Benutzername für die Datenbank.
+define("USER", "root");
+//Das Passwort für die Datenbank.
+define("PASSWORD", "");
+//Der Name der Datenbank/Schema.
+define("DATABASE", "itv_v02");
 
-/*
-define("HOST", "localhost"); 			// The host you want to connect to. 
-define("USER", "root"); 		// The database username. 
-define("PASSWORD", "");                      // The database password. 
-define("DATABASE", "itv_v02");                   // The database name.
-*/
-
-//
 //Verbindung aufbauen
 $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 
-
+/*
+ * Falls ein Fehler beim Verbindungsaufbau entsteht
+ * wird eine Fehlermeldung angezeigt.
+ */
 if ($mysqli->connect_error) {
-    header("Location: ./err.php?err=Unable to connect to MySQL");
+    header("Location: ./err.php?err=Fehler beim herstellen der Verbindung mit dem MySQL Server.");
     exit();
 }
+
+/*
+ * Falls ein Fehler beim setzen des Encodings
+ * entsteht wird eine Fehlermeldung angezeigt.
+ */
 if (!$mysqli->set_charset("utf8")) {
-    header("Location: ./err.php?err=Unable to set charset");
+    header("Location: ./err.php?err=Fehler beim setzen des Encodings.");
     exit();
 }
 
