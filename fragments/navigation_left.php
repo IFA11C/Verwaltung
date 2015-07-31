@@ -62,7 +62,7 @@
             </a>
         </li>
         <li>
-            <a href="<?php echo($userUrl); ?>" class="text-center">
+            <a href="<?php echo($logoutUrl); ?>" class="text-center">
                 <span class="glyphicon glyphicon-eject"></span>
             </a>
         </li>

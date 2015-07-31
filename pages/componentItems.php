@@ -1,5 +1,6 @@
 <?php
     include '../php/dbq/component_query.php';
+    include '../php/dbq/all_components_query.php';
     include '../php/dbq/attribute_query.php';
     
     $componentID = filter_input(INPUT_GET, 'Id');
@@ -40,7 +41,7 @@
                             </h1>
 
                             <div class="hardware-info">
-                                <div class="row">
+                                <div class="row heightFix">
                                     <div class="col col-lg-6">
                                         <?php
                                             if(!empty($components)){
@@ -129,38 +130,38 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="modalLabel">Komponente bearbeiten</h4>
                     </div>
-                    <div class="modal-body">
-                        
-                        <div class="form-group">
-                            <label class="control-label" for="txtName">Name</label>
-                            <input placeholder="Name" id="txtName" class="form-control" type="text"/>
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST"> 
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label" for="txtName">Name</label>
+                                <input placeholder="Name" id="txtName" class="form-control" type="text" name="komponentenart_ka_id" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtRoom">Raum</label>
+                                <input placeholder="Raum" id="txtRoom" class="form-control" type="text" name="raeume_r_id" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtSupplier">Lieferant</label>
+                                <input placeholder="Lieferant" id="txtSupplier" class="form-control" type="text" name="k_hersteller" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
+                                <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text" name="k_einkaufsdatum" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
+                                <input placeholder="Garantie" id="txtWarranty" class="form-control" type="text" name="k_gewaehrleistungsdauer" />
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="txtDescription">Beschreibung</label>
+                                <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text" name="k_notiz" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtRoom">Raum</label>
-                            <input placeholder="Raum" id="txtRoom" class="form-control" type="text"/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
+                            <button type="submit" class="btn btn-success" name="btnUpdate">Änderungen speichern</button>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtSupplier">Lieferant</label>
-                            <input placeholder="Lieferant" id="txtSupplier" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtPurchaseDate">Einkaufsdatum</label>
-                            <input placeholder="Einkaufsdatum" id="txtPurchaseDate" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtWarrantyInYears">Garantie in Jahren</label>
-                            <input placeholder="Garantie" id="txtWarranty" class="form-control" type="text"/>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="txtDescription">Beschreibung</label>
-                            <input placeholder="Beschreibung" id="txtDescription" class="form-control" type="text"/>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">Änderungen verwerfen</button>
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Änderungen speichern</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
