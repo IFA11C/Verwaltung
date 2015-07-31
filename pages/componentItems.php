@@ -187,11 +187,11 @@
                                         foreach($attributes as $attribute) {
                                             $id = $attribute["kat_id"];
                                             $description = $attribute["kat_bezeichnung"];
-                                            echo '<label class="checkbox-inline"><input type="checkbox" name="'
+                                            echo '<div class="checkbox"><label><input type="checkbox" name="'
                                             .$id
                                             .'">'
                                             .$description
-                                            . '</label>';    
+                                            . '</label></div>';    
                                         }
                                     } 
                                     ?> 
@@ -204,11 +204,11 @@
                                         foreach($attributes as $attribute) {
                                             $id = $attribute["kat_id"];
                                             $description = $attribute["kat_bezeichnung"];
-                                            echo '<label class="checkbox-inline"><input type="checkbox" name="'
+                                            echo '<div class="checkbox"><label><input type="checkbox" name="'
                                             .$id
                                             .'">'
                                             .$description
-                                            . '</label>';    
+                                            . '</label></div>';    
                                         }
                                     } 
                                     ?> 
