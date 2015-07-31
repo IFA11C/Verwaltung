@@ -55,17 +55,17 @@ function getHardwareAttribute($hardwareID) {
 /**
  * Diese Funktion entfernt eine bestehende Komponente aus der Datenbank.
  */
-function removeComponent($id) {
-    global $mysqli;
-    if ($insert_stmt = $mysqli->prepare("DELETE FROM komponenten WHERE k_id = ?")) {
-        $insert_stmt->bind_param('s', $id);
-        // Execute the prepared query.
-        if (!$insert_stmt->execute()) {
-            return false;
-            exit();
-        }
-    }
-    return true;
-
-    exit();
-}
+//function removeComponent($id) {
+//    global $mysqli;
+//    if ($insert_stmt = $mysqli->prepare("DELETE FROM komponenten WHERE k_id = ?")) {
+//        $insert_stmt->bind_param('s', $id);
+//        // Execute the prepared query.
+//        if (!$insert_stmt->execute()) {
+//            return false;
+//            exit();
+//        }
+//    }
+//    return true;
+//
+//    exit();
+//}
