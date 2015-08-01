@@ -5,11 +5,11 @@
 ![alt tag](http://screenshots.s32cdn.com/20/198081/5600.png)
 
 <h3>Datenbank</h3>
-<p>Um die notwendigen Tabellen in die MySQL Datenbank einzuspielen muss lediglich der SQL Dumb eingespielt werden der im "dev" Verzeichnis zu finden ist.</p>
-<p>Um einen SQL Dumb in einer MySQL Datenbank einzuspielen können mehrere Tools verwendet werden im folgenden wird als Beispiel phpMyAdmin verwendet da es bei Xampp inbegriffen ist.</p>
+<p>Um die notwendigen Tabellen in die MySQL Datenbank einzuspielen muss lediglich der SQL Dump eingespielt werden der im "dev" Verzeichnis zu finden ist.</p>
+<p>Um einen SQL Dump in einer MySQL Datenbank einzuspielen können mehrere Tools verwendet werden im folgenden wird als Beispiel phpMyAdmin verwendet da es bei Xampp inbegriffen ist.</p>
 1. Einen Webbrowser öffnen und auf http://localhost/phpMyAdmin navigieren.
 2. In der oberen Menuzeile auf "Importieren" klicken.
-3. Auf den "Durchsuchen" Knopf drücken und den SQL Dumb aufwählen.
+3. Auf den "Durchsuchen" Knopf drücken und den SQL Dump aufwählen.
 4. Mit "Ok" bestätigen.
 
 <p>Wenn der Dump erfolgreich eingespielt wurde sollte eine Datenbank/Schema mit dem Namen "itv_v02" vorhanden sein mit den folgenden Tabellen.</p>
